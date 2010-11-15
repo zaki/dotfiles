@@ -1,5 +1,7 @@
 require 'rake'
 require 'erb'
+require 'rbconfig'
+require 'fileutils'
 
 desc "install the dot files into user's home directory"
 task :install do
@@ -33,7 +35,7 @@ task :install do
 end
 
 def replace_file(file)
-  system %Q{rm -rf "$HOME/.#{file.sub('.erb', '')}"}
+  FileUtils.rm_rf("$HOME/.#{file.sub('.erb', '')}")
   link_file(file)
 end
 
@@ -45,6 +47,10 @@ def link_file(file)
     end
   else
     puts "linking ~/.#{file}"
-    system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
+    if Config::CONFIG['host_os'] =~ /mswin|mingw/
+      FileUtils.cp_r("./#{file}", File.join(ENV['HOME'],"/.#{file}"))
+    else
+      system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
+    end
   end
 end
