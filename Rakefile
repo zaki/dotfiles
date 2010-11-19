@@ -8,6 +8,7 @@ task :install do
   replace_all = false
   Dir['*'].each do |file|
     next if %w[Rakefile README.rdoc LICENSE].include? file
+    next if (Config::CONFIG['host_os'] !~ /mswin|mingw/) && (file=~/^(win|aliases)/)
     
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
       if File.identical? file, File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
@@ -48,7 +49,11 @@ def link_file(file)
   else
     puts "linking ~/.#{file}"
     if Config::CONFIG['host_os'] =~ /mswin|mingw/
-      FileUtils.cp_r("./#{file}", File.join(ENV['HOME'],"/.#{file}"))
+      if File.directory?("./#{file}")
+        FileUtils.cp_r("./#{file}/.", File.join(ENV['HOME'],"/.#{file}"))
+      else
+        FileUtils.cp_r("./#{file}", File.join(ENV['HOME'],"/.#{file}"))
+      end
     else
       system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
     end
