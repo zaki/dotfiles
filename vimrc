@@ -85,4 +85,6 @@ map <Leader>c :Rcontroller
 map <Leader>v :Rview
 map <Leader>r :e config/routes.rb
 map :W :w
+inoremap <C-S> <ESC>:w<CR>a
+noremap <C-S> :w<CR>
 
