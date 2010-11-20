@@ -84,4 +84,5 @@ map <Leader>m :Rmodel
 map <Leader>c :Rcontroller
 map <Leader>v :Rview
 map <Leader>r :e config/routes.rb
+map :W :w
 
