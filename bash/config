@@ -39,8 +39,8 @@ function set_git_prompt {
     GIT_STATE=$GIT_STATE''
   fi
 
-  echo -en "($GIT_BRANCH$GIT_STATE)"
+  echo -en " ($GIT_BRANCH$GIT_STATE)"
 }
 
-export PS1="$GREEN\w $BLUE\$(set_git_prompt) $WHITE\$ "
+export PS1="$GREEN\w$BLUE\$(set_git_prompt) $WHITE\$ "
 export EDITOR="gvim"
