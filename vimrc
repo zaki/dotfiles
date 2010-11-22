@@ -16,6 +16,7 @@ let g:miniBufExplModSelTarget = 1
 " Syntax and appearance
 syntax enable
 filetype on
+au BufRead *.fs set filetype=fs
 
 set cf
 set clipboard+=unnamed
