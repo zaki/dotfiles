@@ -5,7 +5,7 @@ GREEN="\[\033[0;32m\]"
 WHITE="\[\033[0;37m\]"
 
 function set_git_prompt {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || ''
+  ref=$(git symbolic-ref HEAD 2> /dev/null)
   GIT_BRANCH=${ref#refs/heads/} || ''
   GIT_STATE=''
   STATUS=$(git status 2> /dev/null)
