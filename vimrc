@@ -89,3 +89,4 @@ map :W :w
 inoremap <C-S> <ESC>:w<CR>a
 noremap <C-S> :w<CR>
 
+set statusline=%t%m%r%h%w\ [TYPE:%Y]\ [RUBY:%{$RUBY_VERSION}]
