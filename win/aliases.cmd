@@ -5,6 +5,7 @@ doskey kill=taskkill /IM $*
 doskey g=git $*
 doskey gg=git gui $*
 doskey gk=gitk --all $*
+doskey gp=git pull $*
 doskey r=rails $*
 doskey rs=rails s $*
 doskey rg=rails g $*
