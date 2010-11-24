@@ -6,8 +6,8 @@ alias ls="ls -la"
 
 # git
 alias g='git'
-alias gg='git gui'
-alias gk='gitk --all'
+alias gg='git gui &'
+alias gk='gitk --all &'
 alias gp='git pull'
 
 # rails

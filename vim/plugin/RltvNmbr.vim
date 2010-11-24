@@ -76,10 +76,10 @@ fun! s:RltvNmbr(mode,...)
 	 break
 	endif
 	if wmwc < 0
-	 let name = "RLTVN_M".(-wmwc)
+	 let name = "RLTVN_M".(-wmwc+1)
 	 exe "sign place ".(s:RLTVNMBR + wmwc)." line=".w." name=".name." buffer=".bufnr("%")
 	else
-	 let name = "RLTVN_P".wmwc
+	 let name = "RLTVN_P".(wmwc+1)
 	 exe "sign place ".(s:RLTVNMBR + wmwc)." line=".w." name=".name." buffer=".bufnr("%")
 	endif
 	let w= w + 1
