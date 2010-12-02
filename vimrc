@@ -90,3 +90,24 @@ inoremap <C-S> <ESC>:w<CR>a
 noremap <C-S> :w<CR>
 
 set statusline=%t%m%r%h%w\ [TYPE:%Y]\ [RUBY:%{$RUBY_VERSION}]
+
+map <Leader>r :RN<cr>
+
+" Org Mode
+set foldmethod=manual
+filetype plugin indent on
+
+if has("unix")
+    let g:agenda_dirs='~/Dropbox/org/'
+else
+    let g:agenda_dirs='~/my\ documents/my\ dropbox/org/'
+end
+
+let g:org_todo_setup='SOMEDAY | TODO NEXT | STARTED | DONE CANCELED'
+let g:org_tag_setup='{@home(h) @work(w)} {+top(t) +mid(m) +low(l)} {computer(c) phone(p)}'
+
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
+au BufRead,BufNewFile *.org call org#SetOrgFileType()
+au BufRead *.org :PreLoadTags
+au BufWrite *.org :PreWriteTags
+au BufWritePost *.org :PostWriteTags
