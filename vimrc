@@ -99,12 +99,19 @@ filetype plugin indent on
 
 if has("unix")
     let g:agenda_dirs='~/Dropbox/org/'
+    let g:agenda_files=['~/Dropbox/org/personal.org' 
+                     \ ,'~/Dropbox/org/work.org'
+                     \ ]
 else
     let g:agenda_dirs='~/my\ documents/my\ dropbox/org/'
+    let g:agenda_files=['C:\Documents\ and\ Settings\Zaki\My\ Documents\My\ Dropbox\org\personal.org'
+                     \ ,'C:\Documents\ and\ Settings\Zaki\My\ Documents\My\ Dropbox\org\work.org'
+                     \ ]
 end
 
-let g:org_todo_setup='SOMEDAY | TODO NEXT | STARTED | DONE CANCELED'
+let g:org_todo_setup='SOMEDAY TODO NEXT STARTED | DONE CANCELED'
 let g:org_tag_setup='{@home(h) @work(w)} {+top(t) +mid(m) +low(l)} {computer(c) phone(p)}'
+map <Leader>cv :let b:v.columnview = 1 - b:v.columnview<CR>
 
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
 au BufRead,BufNewFile *.org call org#SetOrgFileType()

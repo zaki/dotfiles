@@ -1924,8 +1924,10 @@ function! s:MakeResults(search_spec,...)
         call s:OrgIfExprResults(ifexpr,sparse_search)
     else
         for file in g:agenda_files
-            let g:mycommand = 'tab drop '. file
-            let mycommand = 'tab drop '. file
+            " let g:mycommand = 'tab drop '. file
+            let g:mycommand = 'vsp '. file
+            " let mycommand = 'tab drop '. file
+            let mycommand = 'vsp '. file
             "execute 'tab drop ' . file
             execute mycommand
             call s:OrgIfExprResults(ifexpr,sparse_search)
@@ -3725,7 +3727,7 @@ function! s:UpdateBlock()
    ?^#+BEGIN:
     let block_type = matchstr(getline(line('.')),'\S\+\s\+\zs\S\+')
    if matchstr(getline(line('.')+1),'^#+END') == ''
-        normal jV/^#+END/-1dk
+        normal jV/^#+END/-1dk
     endif
     if block_type == 'clocktable'
         let block_type='ClockTable'
@@ -3952,7 +3954,8 @@ function! s:LocateFile(filename)
     if bufwinnr(filename) >= 0
         silent execute bufwinnr(filename)."wincmd w"
     else
-        execute 'tab drop ' . filename
+        " execute 'tab drop ' . filename
+        execute 'vsp ' . filename
     endif
     "endif
     " below is alternate method:
@@ -4683,7 +4686,8 @@ function! s:CaptureBuffer()
 endfunction
 function! s:ProcessCapture()
     normal ggVG"xy
-    execute "tab drop ".g:org_capture_file
+    " execute "tab drop ".g:org_capture_file
+    execute "vsp ".g:org_capture_file
     normal gg
     call search('^\* Agenda')
     execute s:OrgSubtreeLastLine()
@@ -4717,7 +4721,7 @@ function! EditAgendaFiles()
 endfunction
 function! s:SaveAgendaFiles()
     " yank files into @a
-   normal gg/^--jV/^--?^\S"ay 
+   normal gg/^--jV/^--?^\S"ay 
    let @a = substitute(@a,' ','\\ ','g')
    if g:agenda_files[0][1] != '-'
         let g:agenda_files = split(@a,"\n")
