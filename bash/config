@@ -44,3 +44,7 @@ function set_git_prompt {
 
 export PS1="$GREEN\w$BLUE\$(set_git_prompt) $WHITE\$ "
 export EDITOR="gvim"
+
+# Make the Caps Lock key be a Control key:
+xmodmap -e "remove lock = Caps_Lock"
+xmodmap -e "add control = Caps_Lock"
