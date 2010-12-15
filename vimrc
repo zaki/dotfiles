@@ -125,3 +125,5 @@ au BufRead,BufNewFile *.org call org#SetOrgFileType()
 au BufRead *.org :PreLoadTags
 au BufWrite *.org :PreWriteTags
 au BufWritePost *.org :PostWriteTags
+
+let g:SuperTabDefaultCompletionType = "context"
