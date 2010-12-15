@@ -46,7 +46,7 @@ set showmatch
 set mat=5
 set list
 " Show $ at end of line and trailing space as ~
-set lcs=tab:>-,trail:~,extends:>,precedes:<
+set lcs=tab:->,trail:~,extends:>,precedes:<
 set novisualbell
 set noerrorbells
 set laststatus=2
@@ -88,6 +88,13 @@ map <Leader>r :e config/routes.rb
 map :W :w
 inoremap <C-S> <ESC>:w<CR>a
 noremap <C-S> :w<CR>
+
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+"improve autocomplete menu color
+highlight Pmenu ctermbg=238 gui=bold
 
 set statusline=%t%m%r%h%w\ [TYPE:%Y]\ [RUBY:%{$RUBY_VERSION}]
 
