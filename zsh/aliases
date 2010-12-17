@@ -4,15 +4,23 @@ alias ..='cd ..'
 # ls
 alias ls="ls -la"
 
+# less
+alias lg='less +G'
+
 # git
 alias g='git'
 alias gg='git gui &'
 alias gk='gitk --all &'
 alias gp='git pull'
+alias gb='git branch --all'
 
 # rails
 alias r='rails'
 alias rc='rails console'
 alias rs='rails server'
 alias rg='rails g'
+
+# linux
+alias sagu='sudo apt-get update'
+alias sagU='sudo apt-get upgrade'
 
