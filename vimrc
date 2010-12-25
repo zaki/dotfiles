@@ -127,3 +127,5 @@ au BufWrite *.org :PreWriteTags
 au BufWritePost *.org :PostWriteTags
 
 let g:SuperTabDefaultCompletionType = "context"
+set spell spelllang=en
+
