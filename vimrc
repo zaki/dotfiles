@@ -128,4 +128,5 @@ au BufWritePost *.org :PostWriteTags
 
 let g:SuperTabDefaultCompletionType = "context"
 set spell spelllang=en
-
+inoremap ii <ESC>
+inoremap jj <ESC>
