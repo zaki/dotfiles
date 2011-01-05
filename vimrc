@@ -63,11 +63,7 @@ map <Leader>h :set invhls <CR>
 map <Leader>l :lw<CR>
 
 " Wiki settings
-if has("unix")
-  let g:vimwiki_list = [{'path': '~/Dropbox/Wiki/', 'ext': '.wiki'}]
-else
-  let g:vimwiki_list = [{'path': 'c:\documents and settings\zaki\my documents\my dropbox\wiki\', 'ext': '.wiki'}]
-end
+let g:vimwiki_list = [{'path': '~/Dropbox/Wiki/diary', 'ext': '.wiki', 'index': 'diary'}]
 
 map :cloc :!cloc --exclude-dir=.git,.idea .<CR>
 map <Leader>n :NERDTreeToggle<CR>
@@ -76,8 +72,9 @@ noremap <silent> <F11> :cal VimCommanderToggle()<CR>
 let g:wimcommander_shallcd = 1
 
 " Visual Studio style shortcuts
-map <C-S-F> :lvimgrep //gj **/*.*<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+" map <C-S-F> :lvimgrep //gj **/*.*<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 imap <C-Space> <C-N>
+noremap <Space> <C-f>
 
 " Ruby/rails Settings
 let g:rails_default_file='config/database.yml'
@@ -104,17 +101,10 @@ map <Leader>r :RN<cr>
 set foldmethod=manual
 filetype plugin indent on
 
-if has("unix")
-    let g:agenda_dirs='~/Dropbox/org/'
-    let g:agenda_files=['~/Dropbox/org/personal.org' 
-                     \ ,'~/Dropbox/org/work.org'
-                     \ ]
-else
-    let g:agenda_dirs='~/my\ documents/my\ dropbox/org/'
-    let g:agenda_files=['C:\Documents\ and\ Settings\Zaki\My\ Documents\My\ Dropbox\org\personal.org'
-                     \ ,'C:\Documents\ and\ Settings\Zaki\My\ Documents\My\ Dropbox\org\work.org'
-                     \ ]
-end
+let g:agenda_dirs='~/Dropbox/org/'
+let g:agenda_files=['~/Dropbox/org/personal.org' 
+                 \ ,'~/Dropbox/org/work.org'
+                 \ ]
 
 let g:org_todo_setup='SOMEDAY TODO NEXT STARTED | DONE CANCELED'
 let g:org_tag_setup='{@home(h) @work(w)} {+top(t) +mid(m) +low(l)} {computer(c) phone(p)}'
@@ -127,6 +117,7 @@ au BufWrite *.org :PreWriteTags
 au BufWritePost *.org :PostWriteTags
 
 let g:SuperTabDefaultCompletionType = "context"
+set nobackup
 set spell spelllang=en
 inoremap ii <ESC>
 inoremap jj <ESC>
