@@ -93,8 +93,10 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
 
-set statusline=%t%m%r%h%w\ [TYPE:%Y]\ [RUBY:%{$RUBY_VERSION}]
-
+set statusline=%t%m%r%h%w\ [TYPE:%Y]
+if ($RUBY_VERSION)
+  set statusline+=\ [RUBY:%{$RUBY_VERSION}]
+endif
 map <Leader>r :RN<cr>
 
 " Org Mode
