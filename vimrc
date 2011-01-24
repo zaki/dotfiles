@@ -26,7 +26,8 @@ set ruler
 set nu
 set nowrap
 set timeoutlen=250
-colorscheme railscasts
+" colorscheme railscasts
+colorscheme zazen
 
 set ts=2
 set bs=2
