@@ -124,3 +124,6 @@ set nobackup
 set spell spelllang=en
 inoremap ii <ESC>
 inoremap jj <ESC>
+
+noremap 0 ^
+noremap 00 0
