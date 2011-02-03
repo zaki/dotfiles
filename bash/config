@@ -43,5 +43,4 @@ function set_git_prompt {
 }
 
 export PS1="$GREEN\w$BLUE\$(set_git_prompt) $WHITE\$ "
-export EDITOR="gvim"
 
