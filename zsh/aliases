@@ -13,6 +13,8 @@ alias gg='git gui &'
 alias gk='gitk --all &'
 alias gp='git pull'
 alias gb='git branch --all'
+alias gru='git remote update'
+alias grm='git rebase origin/master'
 
 # rails
 alias b=bundle
