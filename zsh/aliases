@@ -32,6 +32,23 @@ alias c=clear
 alias home='cd ~'
 alias dev='cd ~/dev; rvm use 1.9.2; rvm gemset use dev'
 
+# project related
+# set $PROJECTS in .localrc
+if [[ -n $PROJECTS ]]
+then
+  for project in $PROJECTS
+  do
+    if [[ -d ~/dev/$project ]]
+    then
+      # set up RVM
+      rvm use 1.8.7 > /dev/null
+      rvm gemset create $project > /dev/null
+      # set up alias
+      alias "$project"="cd ~/dev/$project; rvm use 1.8.7; rvm gemset use $project"
+    fi
+  done
+fi
+
 # linux
 alias sagu='sudo apt-get update'
 alias sagU='sudo apt-get upgrade'
