@@ -1,46 +1,46 @@
-BLUE="\[\033[0;34m\]"
-RED="\[\033[0;31m\]"
-YELLOW="\[\033[0;33m\]"
-GREEN="\[\033[0;32m\]"
-WHITE="\[\033[0;37m\]"
+c_blue='\[\033[0;036m\]'
+c_red='\[\033[0;031m\]'
+c_yellow='\[\033[1;033m\]'
+c_green='\[\033[0;032m\]'
+c_white='\[\033[0;037m\]'
+c_sgr0='\[\033[0m\]'
 
-function set_git_prompt {
+function set_git_prompt() {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
-  GIT_BRANCH=${ref#refs/heads/} || ''
-  GIT_STATE=''
+  export GIT_BRANCH=${ref#refs/heads/} || ''
+  export GIT_START=''
+  export GIT_END=''
+  export GIT_STAGED=''
+  export GIT_UNTRACKED=''
+  export GIT_UNSTAGED=''
   STATUS=$(git status 2> /dev/null)
   if [[ -z $STATUS ]]
   then
     return
   fi
 
-  LBLUE="\033[0;34m"
-  LRED="\033[0;31m"
-  LYELLOW="\033[0;33m"
-  LGREEN="\033[0;32m"
-  LWHITE="\033[0;37m"
+  export GIT_START='('
+  export GIT_END=')'
 
   if [[ "$STATUS" == *'working directory clean'* ]]
   then
-    GIT_STATE=''
+    export GIT_STATE=''
   else
     if [[ "$STATUS" == *'Changes to be committed:'* ]]
     then
-      GIT_STATE=$GIT_STATE$LGREEN'●'
+      export GIT_STAGED='●'
     fi
     if [[ "$STATUS" == *'Changed but not updated:'* ]]
     then
-      GIT_STATE=$GIT_STATE$LRED'●'
+      export GIT_UNSTAGED='●'
     fi
     if [[ "$STATUS" == *'Untracked files:'* ]]
     then
-      GIT_STATE=$GIT_STATE$LWHITE'●'
+      export GIT_UNTRACKED='●'
     fi
-    GIT_STATE=$GIT_STATE''
   fi
-
-  echo -en " ($GIT_BRANCH$GIT_STATE)"
+  export DATE=`date +%H:%M:%S`
 }
-
-export PS1="$GREEN\w$BLUE\$(set_git_prompt) $WHITE\$ "
+export PROMPT_COMMAND="set_git_prompt"
+export PS1="[\$DATE]\w ${c_yellow}\$GIT_START${c_yellow}\$GIT_BRANCH${c_red}\$GIT_UNSTAGED${c_green}\$GIT_STAGED${c_white}\$GIT_UNTRACKED${c_yellow}\$GIT_END ${c_white}\$ ${c_sgr0}"
 
