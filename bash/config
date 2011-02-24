@@ -13,6 +13,7 @@ function set_git_prompt() {
   export GIT_STAGED=''
   export GIT_UNTRACKED=''
   export GIT_UNSTAGED=''
+  export DATE=`date +%H:%M:%S`
   STATUS=$(git status 2> /dev/null)
   if [[ -z $STATUS ]]
   then
@@ -39,7 +40,6 @@ function set_git_prompt() {
       export GIT_UNTRACKED='●'
     fi
   fi
-  export DATE=`date +%H:%M:%S`
 }
 export PROMPT_COMMAND="set_git_prompt"
 export PS1="[\$DATE]\w ${c_yellow}\$GIT_START${c_yellow}\$GIT_BRANCH${c_red}\$GIT_UNSTAGED${c_green}\$GIT_STAGED${c_white}\$GIT_UNTRACKED${c_yellow}\$GIT_END ${c_white}\$ ${c_sgr0}"
