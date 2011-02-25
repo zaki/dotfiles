@@ -43,8 +43,12 @@ then
       # set up RVM
       rvm use 1.8.7 > /dev/null
       rvm gemset create $project > /dev/null
+      if [[ ! -f ~/dev/$project/.rvmrc ]]
+      then
+        echo "rvm use 1.8.7@$project" > ~/dev/$project/.rvmrc
+      fi
       # set up alias
-      alias "$project"="cd ~/dev/$project; rvm use 1.8.7; rvm gemset use $project"
+      alias "$project"="cd ~/dev/$project"
     fi
   done
 fi
