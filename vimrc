@@ -127,3 +127,8 @@ inoremap jj <ESC>
 
 noremap 0 ^
 noremap 00 0
+
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gv :Gvdiff<CR>
+noremap <Leader>gs :Gstatus<CR>
+
