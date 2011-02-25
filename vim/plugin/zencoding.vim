@@ -129,13 +129,13 @@ endif
 
 unlet! s:zen_settings
 let s:zen_settings = {
-\    'indentation': "\t",
+\    'indentation': "  ",
 \    'lang': "en",
 \    'css': {
 \        'snippets': {
 \            '@i': '@import url(|);',
-\            '@m': "@media print {\n\t|\n}",
-\            '@f': "@font-face {\n\tfont-family:|;\n\tsrc:url(|);\n}",
+\            '@m': "@media print {\n  |\n}",
+\            '@f': "@font-face {\n  font-family:|;\n  src:url(|);\n}",
 \            '!': '!important',
 \            'pos': 'position:|;',
 \            'pos:s': 'position:static;',
@@ -608,16 +608,16 @@ let s:zen_settings = {
 \    },
 \    'html': {
 \        'snippets': {
-\            'cc:ie6': "<!--[if lte IE 6]>\n\t${child}|\n<![endif]-->",
-\            'cc:ie': "<!--[if IE]>\n\t${child}|\n<![endif]-->",
-\            'cc:noie': "<!--[if !IE]><!-->\n\t${child}|\n<!--<![endif]-->",
+\            'cc:ie6': "<!--[if lte IE 6]>\n  ${child}|\n<![endif]-->",
+\            'cc:ie': "<!--[if IE]>\n  ${child}|\n<![endif]-->",
+\            'cc:noie': "<!--[if !IE]><!-->\n  ${child}|\n<!--<![endif]-->",
 \            'html:4t': "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n"
 \                    ."<html lang=\"${lang}\">\n"
 \                    ."<head>\n"
 \                    ."    <meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\">\n"
 \                    ."    <title></title>\n"
 \                    ."</head>\n"
-\                    ."<body>\n\t${child}|\n</body>\n"
+\                    ."<body>\n  ${child}|\n</body>\n"
 \                    ."</html>",
 \            'html:4s': "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n"
 \                    ."<html lang=\"${lang}\">\n"
@@ -625,7 +625,7 @@ let s:zen_settings = {
 \                    ."    <meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\">\n"
 \                    ."    <title></title>\n"
 \                    ."</head>\n"
-\                    ."<body>\n\t${child}|\n</body>\n"
+\                    ."<body>\n  ${child}|\n</body>\n"
 \                    ."</html>",
 \            'html:xt': "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
 \                    ."<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"${lang}\">\n"
@@ -633,7 +633,7 @@ let s:zen_settings = {
 \                    ."    <meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\" />\n"
 \                    ."    <title></title>\n"
 \                    ."</head>\n"
-\                    ."<body>\n\t${child}|\n</body>\n"
+\                    ."<body>\n  ${child}|\n</body>\n"
 \                    ."</html>",
 \            'html:xs': "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"
 \                    ."<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"${lang}\">\n"
@@ -641,7 +641,7 @@ let s:zen_settings = {
 \                    ."    <meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\" />\n"
 \                    ."    <title></title>\n"
 \                    ."</head>\n"
-\                    ."<body>\n\t${child}|\n</body>\n"
+\                    ."<body>\n  ${child}|\n</body>\n"
 \                    ."</html>",
 \            'html:xxs': "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n"
 \                    ."<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"${lang}\">\n"
@@ -649,7 +649,7 @@ let s:zen_settings = {
 \                    ."    <meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\" />\n"
 \                    ."    <title></title>\n"
 \                    ."</head>\n"
-\                    ."<body>\n\t${child}|\n</body>\n"
+\                    ."<body>\n  ${child}|\n</body>\n"
 \                    ."</html>",
 \            'html:5': "<!DOCTYPE HTML>\n"
 \                    ."<html lang=\"${lang}\">\n"
@@ -657,7 +657,7 @@ let s:zen_settings = {
 \                    ."    <meta charset=\"UTF-8\">\n"
 \                    ."    <title></title>\n"
 \                    ."</head>\n"
-\                    ."<body>\n\t${child}|\n</body>\n"
+\                    ."<body>\n  ${child}|\n</body>\n"
 \                    ."</html>"
 \        },
 \        'default_attributes': {
@@ -949,7 +949,7 @@ function! s:zen_parseIntoTree(abbr, type)
       let snippet = snippets[tag_name]
       let snippet = substitute(snippet, '|', '${cursor}', 'g')
       let lines = split(snippet, "\n")
-      call map(lines, 'substitute(v:val, "\\(    \\|\\t\\)", indent, "g")')
+      call map(lines, 'substitute(v:val, "\\(    \\|\  \\)", indent, "g")')
       let current.snippet = join(lines, "\n")
       let current.name = ''
     endif
@@ -1537,11 +1537,11 @@ endfunction
 
 function! s:zen_parseTag(tag)
   let current = { 'name': '', 'attr': {}, 'child': [], 'snippet': '', 'multiplier': 1, 'parent': {}, 'value': '', 'pos': 0 }
-  let mx = '<\([a-zA-Z][a-zA-Z0-9]*\)\(\%(\s[a-zA-Z][a-zA-Z0-9]\+=\%([^"'' \t]\+\|["''][^"'']*["'']\)\s*\)*\)\(/\{0,1}\)>'
+  let mx = '<\([a-zA-Z][a-zA-Z0-9]*\)\(\%(\s[a-zA-Z][a-zA-Z0-9]\+=\%([^"''   ]\+\|["''][^"'']*["'']\)\s*\)*\)\(/\{0,1}\)>'
   let match = matchstr(a:tag, mx)
   let current.name = substitute(match, mx, '\1', 'i')
   let attrs = substitute(match, mx, '\2', 'i')
-  let mx = '\([a-zA-Z0-9]\+\)=["'']\{0,1}\([^"'' \t]*\|[^"'']\+\)["'']\{0,1}'
+  let mx = '\([a-zA-Z0-9]\+\)=["'']\{0,1}\([^"''   ]*\|[^"'']\+\)["'']\{0,1}'
   while len(attrs) > 0
     let match = matchstr(attrs, mx)
     if len(match) == 0
