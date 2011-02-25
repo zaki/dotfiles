@@ -1,0 +1,15 @@
+GEMS="bundler rake capistrano-ext capistrano ZenTest autotest-rails autotest-fsevent autotest-growl"
+
+__setup_ruby()
+{
+#rvm install $1
+  rvm use $1
+  rvm gemset use global
+  gem install $GEMS
+}
+
+read -p "Install Ruby 1.9.2?" REPLY
+test "$REPLY" == 'y' && __setup_ruby "1.9.2"
+
+read -p "Install Ruby 1.8.7?" REPLY
+test "$REPLY" == 'y' && __setup_ruby "1.8.7"
