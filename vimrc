@@ -119,6 +119,11 @@ au BufRead *.org :PreLoadTags
 au BufWrite *.org :PreWriteTags
 au BufWritePost *.org :PostWriteTags
 
+let g:user_zen_settings = {
+\  'indentation' : '  ',
+\}
+
+
 let g:SuperTabDefaultCompletionType = "context"
 set nobackup
 set spell spelllang=en
