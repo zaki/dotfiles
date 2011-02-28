@@ -73,7 +73,7 @@ noremap <silent> <F11> :cal VimCommanderToggle()<CR>
 let g:wimcommander_shallcd = 1
 
 " Visual Studio style shortcuts
-" map <C-S-F> :lvimgrep //gj **/*.*<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+map <Leader>f :lvimgrep //gj **/*.*<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 imap <C-Space> <C-N>
 noremap <Space> <C-f>
 
@@ -84,6 +84,7 @@ map <Leader>c :Rcontroller
 map <Leader>v :Rview
 map <Leader>r :e config/routes.rb
 map :W :w
+map :Q :q
 inoremap <C-S> <ESC>:w<CR>a
 noremap <C-S> :w<CR>
 
