@@ -2,6 +2,11 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
+if [ -f ~/.projectrc ]
+then
+  . ~/.projectrc
+fi
+
 source ~/.bash/aliases
 source ~/.bash/completions
 source ~/.bash/config
