@@ -9,8 +9,16 @@ alias lg='less +G'
 
 # git
 alias g='git'
-alias gg='git gui &'
-alias gk='gitk --all &'
+
+platform=`uname`
+if [[ "$platform" == 'Darwin' ]]
+then
+  alias gg='gitx -c'
+  alias gk='gitx --all'
+else
+  alias gg='git gui &'
+  alias gk='gitk --all &'
+fi
 alias gp='git pull'
 alias gb='git branch --all'
 alias gru='git remote update'
