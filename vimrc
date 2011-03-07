@@ -133,6 +133,10 @@ inoremap jj <ESC>
 
 noremap 0 ^
 noremap 00 0
+noremap <C-j> 5j
+noremap <C-k> 5k
+noremap <C-h> 5h
+noremap <C-l> 5l
 
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gv :Gvdiff<CR>
