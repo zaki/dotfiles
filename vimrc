@@ -73,7 +73,9 @@ noremap <silent> <F11> :cal VimCommanderToggle()<CR>
 let g:wimcommander_shallcd = 1
 
 " Visual Studio style shortcuts
-map <Leader>f :lvimgrep //gj **/*.*<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+command! -nargs=+ SearchFor execute 'silent lgrep! <args>' | lopen
+map <Leader>f :SearchFor  **/*.*<Left><Left><Left><Left><Left><Left><Left>
+
 imap <C-Space> <C-N>
 noremap <Space> <C-f>
 
