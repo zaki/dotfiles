@@ -2,14 +2,20 @@ GEMS="bundler rake capistrano-ext capistrano ZenTest autotest-rails autotest-fse
 
 __setup_ruby()
 {
-#rvm install $1
+  INSTALLED=`rvm list | grep $1 | wc -l`
+  if [[ "$INSTALLED" == *'0'* ]]
+  then
+    read -p "Install Ruby $1 ?" REPLY
+    test "$REPLY" == 'y' && rvm install $1
+  fi
+
   rvm use $1
   rvm gemset use global
   gem install $GEMS
 }
 
-read -p "Install Ruby 1.9.2?" REPLY
-test "$REPLY" == 'y' && __setup_ruby "1.9.2"
-
-read -p "Install Ruby 1.8.7?" REPLY
-test "$REPLY" == 'y' && __setup_ruby "1.8.7"
+for ver in 1.9.2 1.8.7
+do
+  read -p "Install Ruby $ver?" REPLY
+  test "$REPLY" == 'y' && __setup_ruby "$ver"
+done
