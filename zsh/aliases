@@ -21,7 +21,7 @@ else
 fi
 alias gp='git pull'
 alias gpr='git pull --rebase'
-alias gb='git branch --all'
+alias gb='git branch -a'
 alias gru='git remote update'
 alias grm='git rebase origin/master'
 
