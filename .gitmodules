@@ -1,0 +1,54 @@
+[submodule "vim/bundle/fugitive"]
+	path = vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/bundle/snipmate"]
+	path = vim/bundle/snipmate
+	url = https://github.com/msanders/snipmate.vim.git
+[submodule "vim/bundle/conqueterm"]
+	path = vim/bundle/conqueterm
+	url = https://github.com/rygwdn/vim-conque.git
+[submodule "vim/bundle/rails"]
+	path = vim/bundle/rails
+	url = https://github.com/tpope/vim-rails.git
+[submodule "vim/bundle/vimwiki"]
+	path = vim/bundle/vimwiki
+	url = https://github.com/vim-scripts/vimwiki.git
+[submodule "vim/bundle/vimclojure"]
+	path = vim/bundle/vimclojure
+	url = https://github.com/vim-scripts/VimClojure.git
+[submodule "vim/bundle/zencoding"]
+	path = vim/bundle/zencoding
+	url = https://github.com/mattn/zencoding-vim.git
+[submodule "vim/bundle/matchit"]
+	path = vim/bundle/matchit
+	url = https://github.com/vim-scripts/matchit.zip.git
+[submodule "vim/bundle/vimorganizer"]
+	path = vim/bundle/vimorganizer
+	url = https://github.com/hsitz/VimOrganizer.git
+[submodule "vim/bundle/bufexplorer"]
+	path = vim/bundle/bufexplorer
+	url = https://github.com/vim-scripts/bufexplorer.zip.git
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/bundle/jsbeautify"]
+	path = vim/bundle/jsbeautify
+	url = https://github.com/vim-scripts/jsbeautify.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = https://github.com/vim-scripts/SuperTab.git
+[submodule "vim/bundle/cocoa"]
+	path = vim/bundle/cocoa
+	url = https://github.com/uxp/cocoa.vim.git
+[submodule "vim/bundle/rvm"]
+	path = vim/bundle/rvm
+	url = https://github.com/jcf/rvm_ruby.vim.git
+[submodule "vim/bundle/scratch"]
+	path = vim/bundle/scratch
+	url = https://github.com/vim-scripts/scratch.vim.git
+[submodule "vim/bundle/fs"]
+	path = vim/bundle/fs
+	url = https://github.com/killerswan/fs.vim.git
+[submodule "vim/bundle/zazen"]
+	path = vim/bundle/zazen
+	url = https://github.com/vim-scripts/zazen.git
