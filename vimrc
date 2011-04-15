@@ -7,6 +7,9 @@ end
 
 set viminfo^=!
 
+" Set up pathogen
+call pathogen#runtime_append_all_bundles()
+
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
@@ -97,7 +100,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
 
-set statusline=%t%m%r%h%w\ %{fugitive#statusline() [TYPE:%Y]
+set statusline=%t%m%r%h%w\ %{fugitive#statusline()}\ [TYPE:%Y]
 if ($RUBY_VERSION)
   set statusline+=\ [RUBY:%{$RUBY_VERSION}]
 endif
