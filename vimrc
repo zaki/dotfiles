@@ -147,3 +147,6 @@ noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gv :Gvdiff<CR>
 noremap <Leader>gs :Gstatus<CR>
 
+map <Leader>gl :Glog --max-count=10 --format=format:\%h\ \%cd\ \%an\ \%s --date=short<CR>
+map <Leader>gs :Gstatus<CR>
+map <Leader>gb :Gblame<CR>
