@@ -52,3 +52,6 @@
 [submodule "vim/bundle/zazen"]
 	path = vim/bundle/zazen
 	url = https://github.com/vim-scripts/zazen.git
+[submodule "vim/snippets"]
+	path = vim/snippets
+	url = https://github.com/scrooloose/snipmate-snippets.git
