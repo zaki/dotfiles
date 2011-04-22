@@ -16,6 +16,10 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
+" Snippets Settings
+let g:snippets_dir="~/.vim/snippets"
+source ~/.vim/snippets/support_functions.vim
+
 " Syntax and appearance
 syntax enable
 filetype on
@@ -150,3 +154,7 @@ noremap <Leader>gs :Gstatus<CR>
 map <Leader>gl :Glog --max-count=10 --format=format:\%h\ \%cd\ \%an\ \%s --date=short<CR>
 map <Leader>gs :Gstatus<CR>
 map <Leader>gb :Gblame<CR>
+
+let g:vimclojure#HighlightBuiltins=1
+let g:vimclojure#DynamicHighlighting=1
+let g:vimclojure#ParenRainbow=1
