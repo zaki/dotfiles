@@ -108,6 +108,15 @@ set statusline=%t%m%r%h%w\ %{fugitive#statusline()}\ [TYPE:%Y]
 if ($RUBY_VERSION)
   set statusline+=\ [RUBY:%{$RUBY_VERSION}]
 endif
+
+set statusline+=%{'\ [ENC:'.&fenc.']'}
+set statusline+=%#error#
+set statusline+=%{StatuslineTabWarning()}
+set statusline+=%*
+set statusline+=%#error#
+set statusline+=%{StatuslineTrailingSpaceWarning()}
+set statusline+=%*
+
 map <Leader>r :RN<cr>
 
 " Org Mode
@@ -115,7 +124,7 @@ set foldmethod=manual
 filetype plugin indent on
 
 let g:agenda_dirs='~/Dropbox/org/'
-let g:agenda_files=['~/Dropbox/org/personal.org' 
+let g:agenda_files=['~/Dropbox/org/personal.org'
                  \ ,'~/Dropbox/org/work.org'
                  \ ]
 
@@ -158,3 +167,32 @@ map <Leader>gb :Gblame<CR>
 let g:vimclojure#HighlightBuiltins=1
 let g:vimclojure#DynamicHighlighting=1
 let g:vimclojure#ParenRainbow=1
+
+""recalculate the trailing whitespace warning when idle, and after saving
+autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
+
+function! StatuslineTrailingSpaceWarning()
+    if !exists("b:statusline_trailing_space_warning")
+        if search('\s\+$', 'nw') != 0
+            let b:statusline_trailing_space_warning = '[~]'
+        else
+            let b:statusline_trailing_space_warning = ''
+        endif
+    endif
+    return b:statusline_trailing_space_warning
+endfunction
+
+function! StatuslineTabWarning()
+    if !exists("b:statusline_tab_warning")
+        let tabs = search('^\t', 'nw') != 0
+
+        if tabs
+            let b:statusline_tab_warning =  '[TAB]'
+        else
+            let b:statusline_tab_warning = ''
+        endif
+    endif
+    return b:statusline_tab_warning
+endfunction
+
