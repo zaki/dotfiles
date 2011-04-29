@@ -81,7 +81,8 @@ let g:wimcommander_shallcd = 1
 
 " Visual Studio style shortcuts
 command! -nargs=+ SearchFor execute 'silent lgrep! -r <args>' | lopen
-map <Leader>f :SearchFor  .<Left><Left>
+map <Leader>g :SearchFor  .<Left><Left>
+map <Leader>f :Ack 
 
 imap <C-Space> <C-N>
 noremap <Space> <C-f>
@@ -196,3 +197,4 @@ function! StatuslineTabWarning()
     return b:statusline_tab_warning
 endfunction
 
+let g:ackhighlight=1
