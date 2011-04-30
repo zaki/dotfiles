@@ -1,5 +1,11 @@
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
+
 source ~/.bash/completion_scripts/git_completion
 source ~/.bash/completion_scripts/brew_completion
+source ~/.bash/completion_scripts/rails_completion
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 complete -C ~/.bash/completion_scripts/rake_completion -o default rake
 complete -C ~/.bash/completion_scripts/rake_completion -o default rk
 complete -C ~/.bash/completion_scripts/capistrano_completion -o default cap
