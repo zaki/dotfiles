@@ -6,3 +6,5 @@ vbell off
 term screen-256color
 altscreen on
 
+termcapinfo xterm* ti@:te@
+
