@@ -80,6 +80,11 @@ function morning() {
   popd
 }
 
+# screen
+function scr() {
+  screen -D -R -c ~/.screenrc-$1
+}
+
 # linux
 alias sagu='sudo apt-get update'
 alias sagU='sudo apt-get upgrade'

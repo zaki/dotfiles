@@ -1,7 +1,7 @@
 startup_message off
 
 attrcolor b ".I"
-caption always "%{= Wk}%-w%{= Gk} %n %t %{-}%+w %-=%c"
+caption always "%{= Wk}%-w%{= Gk} %n %t %{-}%+w %-=%l --- %c"
 vbell off
 term screen-256color
 altscreen on
