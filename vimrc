@@ -198,3 +198,5 @@ function! StatuslineTabWarning()
 endfunction
 
 let g:ackhighlight=1
+set colorcolumn=100
+hi ColorColumn guibg=#222222
