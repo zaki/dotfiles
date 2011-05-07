@@ -31,6 +31,51 @@ zle -N newtab
 
 autoload -Uz vcs_info
 
+function git-need-to-push() {
+  if pushtime=$(echo $1 | grep 'Your branch is ahead' 2> /dev/null); then
+    echo "↑ "
+  fi
+}
+
+function set_git_prompt() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null)
+  export GIT_BRANCH=${ref#refs/heads/} || ''
+  export GIT_START=''
+  export GIT_END=''
+  export GIT_STAGED=''
+  export GIT_UNTRACKED=''
+  export GIT_UNSTAGED=''
+  export DATE=`date +%H:%M:%S`
+  STATUS=$(git status 2> /dev/null)
+  if [[ -z $STATUS ]]
+  then
+    return
+  fi
+
+  export GIT_START='('
+  export GIT_END=')'
+
+  if [[ "$STATUS" == *'working directory clean'* ]]
+  then
+    export GIT_STATE=''
+  else
+    if [[ "$STATUS" == *'Changes to be committed:'* ]]
+    then
+      export GIT_STAGED='●'
+    fi
+    if [[ "$STATUS" == *'Changed but not updated:'* ]]
+    then
+      export GIT_UNSTAGED='●'
+    fi
+    if [[ "$STATUS" == *'Untracked files:'* ]]
+    then
+      export GIT_UNTRACKED='●'
+    fi
+  fi
+
+  echo " ${fg[yellow]}$GIT_START${fg[yellow]}$GIT_BRANCH${fg[red]}$GIT_UNSTAGED${fg[green]}$GIT_STAGED${fg[white]}$GIT_UNTRACKED${fg[yellow]}$GIT_END"
+}
+
 zstyle ':vcs_info:*' stagedstr '%F{28}●'
 zstyle ':vcs_info:*' unstagedstr '%F{11}●'
 zstyle ':vcs_info:*' check-for-changes true
@@ -38,14 +83,18 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'
 zstyle ':vcs_info:*' enable git svn
 precmd () {
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats ' [%F{green}%b%c%u%F{blue}]'
+        zstyle ':vcs_info:*' formats ' [%F{green}%b%u%F{blue}]'
     } else {
-        zstyle ':vcs_info:*' formats ' [%F{green}%b%c%u%F{red}●%F{blue}]'
+        zstyle ':vcs_info:*' formats ' [%F{green}%b%u%F{red}●%F{blue}]'
     }
 
     vcs_info
 }
 
 setopt prompt_subst
-PROMPT='%F{blue}%n %c${vcs_info_msg_0_}%F{blue} %(?/%F{blue}/%F{red})%% %f'
+# PROMPT='%F{blue}%n %c${vcs_info_msg_0_}%F{blue} %(?/%F{blue}/%F{red})%% %f'
+PROMPT='%F{green}%c`set_git_prompt` %(?/%F{blue}/%F{red})%% %f'
+
+export CLICOLOR=1
+export LSCOLORS=GxCxcxdxBxegedHbHgHbbA
 
