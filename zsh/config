@@ -32,10 +32,10 @@ zle -N newtab
 autoload -Uz vcs_info
 
 function git-need-to-push() {
-  if pushtime=$(echo $1 | grep 'Your branch is ahead' 2> /dev/null); then
+  if pushtime=$(git status | grep 'Your branch is ahead' 2> /dev/null); then
     echo "↑ "
   fi
-}
+  }
 
 function set_git_prompt() {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
@@ -45,6 +45,7 @@ function set_git_prompt() {
   export GIT_STAGED=''
   export GIT_UNTRACKED=''
   export GIT_UNSTAGED=''
+  export GIT_NEED_PUSH=''
   export DATE=`date +%H:%M:%S`
   STATUS=$(git status 2> /dev/null)
   if [[ -z $STATUS ]]
@@ -54,6 +55,11 @@ function set_git_prompt() {
 
   export GIT_START='('
   export GIT_END=')'
+
+  if [[ "$STATUS" == *'Your branch is ahead'* ]]
+  then
+    export GIT_NEED_PUSH='⟰'
+  fi
 
   if [[ "$STATUS" == *'working directory clean'* ]]
   then
@@ -73,7 +79,7 @@ function set_git_prompt() {
     fi
   fi
 
-  echo " %{$fg[yellow]%}$GIT_START%{$fg[yellow]%}$GIT_BRANCH%{$fg[red]%}$GIT_UNSTAGED%{$fg[green]%}$GIT_STAGED%{$fg[white]%}$GIT_UNTRACKED%{$fg[yellow]%}$GIT_END"
+  echo " %{$fg[yellow]%}$GIT_START%{$fg[yellow]%}$GIT_BRANCH%{$fg[red]%}$GIT_UNSTAGED%{$fg[green]%}$GIT_STAGED%{$fg[white]%}$GIT_UNTRACKED%{$fg[yellow]%}%{$fg[red]%}$GIT_NEED_PUSH%{$fg[yellow]%}$GIT_END"
 }
 
 zstyle ':vcs_info:*' stagedstr '%F{28}●'
