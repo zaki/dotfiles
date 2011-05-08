@@ -73,7 +73,7 @@ function set_git_prompt() {
     fi
   fi
 
-  echo " ${fg[yellow]}$GIT_START${fg[yellow]}$GIT_BRANCH${fg[red]}$GIT_UNSTAGED${fg[green]}$GIT_STAGED${fg[white]}$GIT_UNTRACKED${fg[yellow]}$GIT_END"
+  echo " %{$fg[yellow]%}$GIT_START%{$fg[yellow]%}$GIT_BRANCH%{$fg[red]%}$GIT_UNSTAGED%{$fg[green]%}$GIT_STAGED%{$fg[white]%}$GIT_UNTRACKED%{$fg[yellow]%}$GIT_END"
 }
 
 zstyle ':vcs_info:*' stagedstr '%F{28}●'
