@@ -45,40 +45,15 @@ alias dev='cd ~/dev; rvm use 1.9.2; rvm gemset use dev'
 # set $PROJECTS in .localrc
 if [[ -n $PROJECTS ]]
 then
-  for project in $PROJECTS
+  for project in ${(z)PROJECTS}
   do
+    echo "setting up $project"
     if [[ -d ~/dev/$project ]]
     then
-      # set up RVM
-      rvm use 1.8.7 > /dev/null
-      rvm gemset create $project > /dev/null
-      if [[ ! -f ~/dev/$project/.rvmrc ]]
-      then
-        echo "rvm use 1.8.7@$project" > ~/dev/$project/.rvmrc
-      fi
-      # set up alias
       alias "$project"="cd ~/dev/$project"
     fi
   done
 fi
-
-function morning() {
-  echo "Good Morning!"
-  pushd .
-  if [[ -n $PROJECTS ]]
-  then
-    for project in $PROJECTS
-    do
-      if [[ -d ~/dev/$project ]]
-      then
-        echo "Refreshing $project"
-        cd ~/dev/$project
-        git pull --rebase
-      fi
-    done
-  fi
-  popd
-}
 
 # screen
 function scr() {
