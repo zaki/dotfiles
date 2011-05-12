@@ -117,6 +117,9 @@ set statusline+=%*
 set statusline+=%#error#
 set statusline+=%{StatuslineTrailingSpaceWarning()}
 set statusline+=%*
+set statusline+=%#error#
+set statusline+=%{StatuslineFullwidthSpaceWarning()}
+set statusline+=%*
 
 map <Leader>r :RN<cr>
 
@@ -172,6 +175,7 @@ let g:vimclojure#ParenRainbow=1
 ""recalculate the trailing whitespace warning when idle, and after saving
 autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
 autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
+autocmd cursorhold,bufwritepost * unlet! b:statusline_fwspace_warning
 
 function! StatuslineTrailingSpaceWarning()
     if !exists("b:statusline_trailing_space_warning")
@@ -197,6 +201,22 @@ function! StatuslineTabWarning()
     return b:statusline_tab_warning
 endfunction
 
+function! StatuslineFullwidthSpaceWarning()
+    if !exists("b:statusline_fwspace_warning")
+        let tabs = search('　', 'nw') != 0
+
+        if tabs
+            let b:statusline_fwspace_warning =  '[FWS]'
+        else
+            let b:statusline_fwspace_warning = ''
+        endif
+    endif
+    return b:statusline_fwspace_warning
+endfunction
 let g:ackhighlight=1
 hi ColorColumn guibg=#222222
 set colorcolumn=100
+
+au! Cursorhold * exe 'match Error /　/'
+set ut=30
+
