@@ -1,6 +1,6 @@
 [user]
-  name = "Zoltan Dezso"
-  email = "dezso.zoltan@gmail.com"
+  name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
+  email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
 [alias]
   k = !gitk --all
   g = !git gui
@@ -30,4 +30,7 @@
   whitespace = nowarn
 [format]
   pretty = %C(yellow)%h%Creset %s %C(red)(%cr)%Creset
+[github]
+  user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
+  token = <%= print("GitHub API Token: "); STDOUT.flush; STDIN.gets.chomp %>
 
