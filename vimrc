@@ -214,9 +214,11 @@ function! StatuslineFullwidthSpaceWarning()
     return b:statusline_fwspace_warning
 endfunction
 let g:ackhighlight=1
-hi ColorColumn guibg=#222222
 set colorcolumn=100
 
 au! Cursorhold * exe 'match Error /　/'
 set ut=30
+
+highlight diffAdded guifg=#00bf00
+highlight diffRemoved guifg=#bf0000
 
