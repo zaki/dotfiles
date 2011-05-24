@@ -33,6 +33,8 @@ set ruler
 set nu
 set nowrap
 set timeoutlen=250
+set go-=l
+set go-=r
 " colorscheme railscasts
 colorscheme zazen
 
