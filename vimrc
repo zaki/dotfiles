@@ -24,6 +24,7 @@ source ~/.vim/snippets/support_functions.vim
 syntax enable
 filetype on
 au BufRead *.fs set filetype=fs
+au BufRead *_javascript.erb set filetype=javascript
 
 set cf
 set clipboard+=unnamed
@@ -216,7 +217,9 @@ function! StatuslineFullwidthSpaceWarning()
     return b:statusline_fwspace_warning
 endfunction
 let g:ackhighlight=1
-set colorcolumn=100
+if (has("gui"))
+  set colorcolumn=100
+end
 
 au! Cursorhold * exe 'match Error /　/'
 set ut=30
