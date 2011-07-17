@@ -1,14 +1,8 @@
-if [ -f ~/.projectrc ]
-then
-  . ~/.projectrc
-fi
-
+[[ -s "$HOME/.projectrc" ]] && source "$HOME/.projectrc"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 source ~/.bash/aliases
 source ~/.bash/completions
 source ~/.bash/config
 
-if [ -f ~/.localrc ]; then
-  . ~/.localrc
-fi
+[[ -s "$HOME/.localrc" ]] && source "$HOME/.localrc"

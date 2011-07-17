@@ -40,20 +40,7 @@ alias v='mvim .'
 alias c=clear
 alias home='cd ~'
 alias dev='cd ~/dev; rvm use 1.9.2; rvm gemset use dev'
-
-# project related
-# set $PROJECTS in .localrc
-if [[ -n $PROJECTS ]]
-then
-  for project in ${(z)PROJECTS}
-  do
-    echo "setting up $project"
-    if [[ -d ~/dev/$project ]]
-    then
-      alias "$project"="cd ~/dev/$project"
-    fi
-  done
-fi
+alias o='open'
 
 # screen
 function scr() {

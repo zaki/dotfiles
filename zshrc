@@ -1,17 +1,13 @@
 export ZSH=$HOME/.oh-my-zsh
-plugins=(git osx ruby bundler brew cap gem github rails3)
+plugins=(git osx ruby bundler brew cap gem github rails3 pow)
 source $ZSH/oh-my-zsh.sh
 
-if [ -f ~/.projectrc ]
-then
-  . ~/.projectrc
-fi
-
+[[ -s "$HOME/.projectrc" ]] && source "$HOME/.projectrc"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
-. ~/.zsh/config
-. ~/.zsh/aliases
-. ~/.zsh/completion
+source ~/.zsh/config
+source ~/.zsh/aliases
+source ~/.zsh/completion
 
 # use .localrc for settings specific to one system
-[[ -f ~/.localrc ]] && .  ~/.localrc
+[[ -s "$HOME/.localrc" ]] && source "$HOME/.localrc"

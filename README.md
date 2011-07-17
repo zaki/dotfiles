@@ -88,14 +88,12 @@ If there are some shell configuration settings which you want secure or
 specific to one system, place it into a ~/.localrc file. This will be
 loaded automatically if it exists.
 
-### Projectrc (currently zsh-only)
+### Projectrc
 
-You can specify a list of projects that you want to be able to access
-using aliases by defining a $PROJECTS array. Projects are assumed to be
-located in ~/dev/
-
-For instance, setting up PROJECTS='proj1 proj2', you can use the aliases
-proj1 to go to ~/dev/proj1 and proj2 to go to ~/dev/proj2
+You can specify a list of project aliases that you want to be able to access
+in ~/.projectrc - this is different from .localrc in that it is encouraged
+that you share .projectrc between computers, while keeping per-machine settings
+in .localrc
 
 ### Git configuration
 
