@@ -227,3 +227,5 @@ set ut=30
 highlight diffAdded guifg=#00bf00
 highlight diffRemoved guifg=#bf0000
 
+noremap <Leader>t :TlistToggle<CR>
+au FileType taglist setlocal nospell
