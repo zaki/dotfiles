@@ -1,3 +1,5 @@
+"{{{ - General Settings
+" ---------------------
 set nocompatible
 if has("win32") || has("win64")
   source $VIMRUNTIME/vimrc_example.vim
@@ -23,8 +25,6 @@ source ~/.vim/snippets/support_functions.vim
 " Syntax and appearance
 syntax enable
 filetype on
-au BufRead *.fs set filetype=fs
-au BufRead *_javascript.erb set filetype=javascript
 
 set cf
 set clipboard+=unnamed
@@ -35,8 +35,9 @@ set nu
 set nowrap
 set timeoutlen=250
 set go=
+set ut=30
 
-" colorscheme railscasts
+" colorscheme
 colorscheme zazen
 
 set ts=2
@@ -69,45 +70,90 @@ let mapleader = ","
 set incsearch
 set hlsearch
 set showcmd
+set foldmethod=marker
+"}}}
 
-map <Leader>h :set invhls <CR>
-map <Leader>l :lw<CR>
+"{{{ - Plugin Settings
 
-" Wiki settings
+" Vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/Wiki/diary', 'ext': '.wiki', 'index': 'diary'}]
 
-map :cloc :!cloc --exclude-dir=.git,.idea .<CR>
-map <Leader>n :NERDTreeToggle<CR>
-
-noremap <silent> <F11> :cal VimCommanderToggle()<CR>
-let g:wimcommander_shallcd = 1
-
-" Visual Studio style shortcuts
-command! -nargs=+ SearchFor execute 'silent lgrep! -r <args>' | lopen
-map <Leader>g :SearchFor  .<Left><Left>
-map <Leader>f :Ack 
-
-imap <C-Space> <C-N>
-noremap <Space> <C-f>
 
 " Ruby/rails Settings
 let g:rails_default_file='config/database.yml'
-map <Leader>m :Rmodel
-map <Leader>c :Rcontroller
-map <Leader>v :Rview
-map <Leader>r :e config/routes.rb
+
+" Org Mode
+set foldmethod=manual
+filetype plugin indent on
+
+let g:agenda_dirs='~/Dropbox/org/'
+let g:agenda_files=['~/Dropbox/org/personal.org'
+                 \ ,'~/Dropbox/org/work.org'
+                 \ ]
+
+let g:org_todo_setup='SOMEDAY TODO NEXT STARTED | DONE CANCELED'
+let g:org_tag_setup='{@home(h) @work(w)} {+top(t) +mid(m) +low(l)} {computer(c) phone(p)}'
+map <Leader>cv :let b:v.columnview = 1 - b:v.columnview<CR>
+
+
+" Zencoding
+let g:user_zen_settings = {
+\  'indentation' : '  ',
+\}
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = "context"
+set nobackup
+set spell spelllang=en
+inoremap ii <ESC>
+inoremap jj <ESC>
+
+" Fugitive
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gv :Gvdiff<CR>
+noremap <Leader>gs :Gstatus<CR>
+
+map <Leader>gl :Glog --max-count=10 --format=format:\%h\ \%cd\ \%an\ \%s --date=short<CR>
+map <Leader>gs :Gstatus<CR>
+map <Leader>gb :Gblame<CR>
+
+" Clojure
+let g:vimclojure#HighlightBuiltins=1
+let g:vimclojure#DynamicHighlighting=1
+let g:vimclojure#ParenRainbow=1
+"}}}
+
+"{{{ - Map Settings
+" General
+map <Leader>h :set invhls <CR>
+map <Leader>l :lw<CR>
+map <Leader>n :NERDTreeToggle<CR>
+imap <C-Space> <C-N>
+noremap <Space> <C-f>
 map :W :w
 map :Q :q
 inoremap <C-S> <ESC>:w<CR>a
 noremap <C-S> :w<CR>
+noremap 0 ^
+noremap 00 0
+" Accelerated movements
+noremap <C-j> 5j
+noremap <C-k> 5k
+noremap <C-h> 5h
+noremap <C-l> 5l
+noremap <Leader>t :TlistToggle<CR> " Taglist window
+map :cloc :!cloc --exclude-dir=.git,.idea .<CR>
+" Rails
+map <Leader>m :Rmodel
+map <Leader>c :Rcontroller
+map <Leader>v :Rview
+map <Leader>r :e config/routes.rb
+map <Leader>f :Ack
+" File cleanup
+map <Leader>cu :%s/ \+$//e \| %s/\t/  /ge<CR>
+"}}}
 
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-"improve autocomplete menu color
-highlight Pmenu ctermbg=238 gui=bold
-
+"{{{ - Statusline Settings
 set statusline=%t%m%r%h%w\ %{fugitive#statusline()}\ [TYPE:%Y]
 if ($RUBY_VERSION)
   set statusline+=\ [RUBY:%{$RUBY_VERSION}]
@@ -123,62 +169,6 @@ set statusline+=%*
 set statusline+=%#error#
 set statusline+=%{StatuslineFullwidthSpaceWarning()}
 set statusline+=%*
-
-map <Leader>r :RN<cr>
-
-" Org Mode
-set foldmethod=manual
-filetype plugin indent on
-
-let g:agenda_dirs='~/Dropbox/org/'
-let g:agenda_files=['~/Dropbox/org/personal.org'
-                 \ ,'~/Dropbox/org/work.org'
-                 \ ]
-
-let g:org_todo_setup='SOMEDAY TODO NEXT STARTED | DONE CANCELED'
-let g:org_tag_setup='{@home(h) @work(w)} {+top(t) +mid(m) +low(l)} {computer(c) phone(p)}'
-map <Leader>cv :let b:v.columnview = 1 - b:v.columnview<CR>
-
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-au BufRead,BufNewFile *.org call org#SetOrgFileType()
-au BufRead *.org :PreLoadTags
-au BufWrite *.org :PreWriteTags
-au BufWritePost *.org :PostWriteTags
-
-let g:user_zen_settings = {
-\  'indentation' : '  ',
-\}
-
-
-let g:SuperTabDefaultCompletionType = "context"
-set nobackup
-set spell spelllang=en
-inoremap ii <ESC>
-inoremap jj <ESC>
-
-noremap 0 ^
-noremap 00 0
-noremap <C-j> 5j
-noremap <C-k> 5k
-noremap <C-h> 5h
-noremap <C-l> 5l
-
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gv :Gvdiff<CR>
-noremap <Leader>gs :Gstatus<CR>
-
-map <Leader>gl :Glog --max-count=10 --format=format:\%h\ \%cd\ \%an\ \%s --date=short<CR>
-map <Leader>gs :Gstatus<CR>
-map <Leader>gb :Gblame<CR>
-
-let g:vimclojure#HighlightBuiltins=1
-let g:vimclojure#DynamicHighlighting=1
-let g:vimclojure#ParenRainbow=1
-
-""recalculate the trailing whitespace warning when idle, and after saving
-autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
-autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
-autocmd cursorhold,bufwritepost * unlet! b:statusline_fwspace_warning
 
 function! StatuslineTrailingSpaceWarning()
     if !exists("b:statusline_trailing_space_warning")
@@ -220,12 +210,41 @@ let g:ackhighlight=1
 if (has("gui"))
   set colorcolumn=100
 end
+"}}}
 
+"{{{ - Autocommand Settings
+" Ruby
+au FileType ruby,eruby set omnifunc=rubycomplete#Complete
+au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+au FileType ruby,eruby let g:rubycomplete_rails = 1
+au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+
+" F#
+au BufRead *.fs set filetype=fs
+
+" Javascript
+au BufRead *_javascript.erb set filetype=javascript
+
+" Tags
+au FileType taglist setlocal nospell
+au BufRead *.org :PreLoadTags
+au BufWrite *.org :PreWriteTags
+au BufWritePost *.org :PostWriteTags
+
+" Jekyll
+au BufNewFile,BufRead */_posts/*.markdown syntax match Comment /\%^---\_.\{-}---$/
+
+" Orgmode
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
+au BufRead,BufNewFile *.org call org#SetOrgFileType()
+
+""recalculate the trailing whitespace warning when idle, and after saving
+au cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+au cursorhold,bufwritepost * unlet! b:statusline_tab_warning
+au cursorhold,bufwritepost * unlet! b:statusline_fwspace_warning
 au! Cursorhold * exe 'match Error /　/'
-set ut=30
+"}}}
 
 highlight diffAdded guifg=#00bf00
 highlight diffRemoved guifg=#bf0000
-
-noremap <Leader>t :TlistToggle<CR>
-au FileType taglist setlocal nospell
+highlight Pmenu ctermbg=238 gui=bold
