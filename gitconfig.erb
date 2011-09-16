@@ -11,7 +11,7 @@
   branch = auto
 [color "branch"]
   current = yellow reverse
-  local = yellow 
+  local = yellow
   remote = green
 [color "diff"]
   meta = yellow bold
@@ -26,6 +26,8 @@
   excludesfile = <%= ENV['HOME'] %>/.gitignore
   editor = gvim
   autocrlf = input
+[branch]
+  autosetuprebase = always
 [apply]
   whitespace = nowarn
 [format]
