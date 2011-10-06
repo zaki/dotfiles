@@ -1,7 +1,18 @@
+# OSX
 .DS_Store
-.svn
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# SVN
+.svn/
+
+# VIM
 *~
-.*.swp
+.*.sw[a-z]
+.netrwhist
 
 # C#
 *.obj
@@ -28,54 +39,57 @@ obj/
 *.bak
 *.ncb
 *.tlb
+[Dd]ebug/
+[Rr]elease/
+[Bb]in
+[Oo]bj
+_ReSharper*
+addin-db-*
+
+# Ruby
+.idea/
+rails_best_practices_output.html
+/.bundle
+/vendor/bundle
+/log/*
+/tmp/*
+**.orig
+
+# Android
+*.apk
+*.ap_
+*.class
+
+# Xcode
+build/*
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.xcworkspace
+!default.xcworkspace
+xcuserdata
+profile
+*.moved-aside
 
 # OpenSim
-bin/*.log
-bin/addin*
-bin/addins
-bin/*.start
 compile.bat
-bin/Physics/
-bin/Terrain/
-bin/tests/
-*/*/bin
-*/*/*/bin
-*/*/*/*/bin
-*/*/*/*/*/bin
-*/*/*/*/*/*/bin
-*/*/*/*/*/*/*/bin
-bin/Debug/*.dll
-bin/*.dll.mdb
-bin/addin-db-*
-bin/*.dll
-bin/ScriptEngines/*.dll
-bin/*.maddin
 Examples/*.dll
-bin/*.exe
 OpenSim.build
 OpenSim.sln
 Prebuild/Prebuild.build
 Prebuild/Prebuild.sln
-bin/OpenSim.log
-bin/Physics*
-bin/Terrain*
-bin/estate_settings.xml
 cov/*
 OpenSim/OpenSim.userprefs
 OpenSim/OpenSim.usertasks
 ThirdParty/bin/
 *.vshost.*
-bin/ScriptEngines/*
 *.intermediate.manifest
 BuildLog.htm
 mt.dep
-_ReSharper*
 *.PIXRun
-
-# Ruby
-log/development.log
-log/production.log
-log/test.log
-log/server.log
-.idea/
 
