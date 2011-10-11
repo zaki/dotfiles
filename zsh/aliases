@@ -38,9 +38,23 @@ alias s='rake spec'
 alias gv='gvim .'
 alias v='mvim .'
 alias c=clear
-alias home='cd ~'
-alias dev='cd ~/dev; rvm use 1.9.2; rvm gemset use dev'
+alias h='cd ~'
 alias o='open'
+
+function p() {
+  if [ $# -eq 1 ]
+  then
+    if [ -d ~/dev/$1 ]
+    then
+      cd ~/dev/$1
+    else
+      echo "Project folder does not exist"
+      cd ~/dev/
+    fi
+  else
+    cd ~/dev/
+  fi
+}
 
 # screen
 function scr() {
