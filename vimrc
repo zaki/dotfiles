@@ -141,7 +141,7 @@ noremap <C-j> 5j
 noremap <C-k> 5k
 noremap <C-h> 5h
 noremap <C-l> 5l
-noremap <Leader>t :TlistToggle<CR> " Taglist window
+noremap <Leader>tl :TlistToggle<CR> " Taglist window
 map :cloc :!cloc --exclude-dir=.git,.idea .<CR>
 " Rails
 map <Leader>m :Rmodel
