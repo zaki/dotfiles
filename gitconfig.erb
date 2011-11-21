@@ -35,4 +35,12 @@
 [github]
   user = <%= print("GitHub Username: "); STDOUT.flush; STDIN.gets.chomp %>
   token = <%= print("GitHub API Token: "); STDOUT.flush; STDIN.gets.chomp %>
-
+[diff]
+  tool = mvim
+[difftool "mvim"]
+  prompt = false
+  cmd = mvim -d -f $LOCAL $REMOTE
+[merge]
+  tool = mvim
+[mergetool "mvim"]
+  cmd = mvim -d -f -c "wincmd J" $MERGED $LOCAL $BASE $REMOTE
