@@ -151,6 +151,8 @@ map <Leader>r :e config/routes.rb
 map <Leader>f :Ack
 " File cleanup
 map <Leader>cu :%s/ \+$//e \| %s/\t/  /ge<CR>
+" Lint
+nmap <Leader>m :w<CR>:make<CR>:cw<CR>
 "}}}
 
 "{{{ - Statusline Settings
