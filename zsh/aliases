@@ -9,6 +9,15 @@ alias lg='less +G'
 
 # git
 alias g='git'
+alias grh='git reset --hard'
+function gpo() {
+  if [ $# -eq 1 ]
+  then
+    git push origin $1
+  else
+    echo "Usage: gpo <branchname>"
+  fi
+}
 
 platform=`uname`
 if [[ "$platform" == 'Darwin' ]]
@@ -24,9 +33,11 @@ alias gpr='git pull --rebase'
 alias gb='git branch -a'
 alias gru='git remote update'
 alias grm='git rebase origin/master'
+alias stashpull='git stash && git pull && git stash pop'
 
 # rails
 alias b=bundle
+alias ber='bundle exec rspec'
 alias r='rails'
 alias rc='rails console'
 alias rs='rails server'
@@ -38,6 +49,7 @@ alias s='rake spec'
 alias gv='gvim .'
 alias v='mvim .'
 alias c=clear
+alias cl='clear && ls -la'
 alias h='cd ~'
 alias o='open'
 
@@ -64,4 +76,17 @@ function scr() {
 # linux
 alias sagu='sudo apt-get update'
 alias sagU='sudo apt-get upgrade'
+
+# set background on ssh connection
+if [[ -f /usr/bin/set-bg-host ]]
+then
+  alias ssh=sshb
+
+  if [ ! -z $PS1 ]; then
+    hostname=`hostname`
+    name=`/usr/bin/base-hostname $hostname`
+    name=`echo $name | tr "[A-Z]" "[a-z]"`
+    /usr/bin/set-bg-host "$name"
+  fi
+fi
 
