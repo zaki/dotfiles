@@ -10,7 +10,32 @@ end
 set viminfo^=!
 
 " Set up pathogen
-call pathogen#runtime_append_all_bundles()
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+" Plugins
+Bundle 'zaki/zazen'
+Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'matchit.zip'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-rails'
+Bundle 'scratch.vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'godlygeek/tabular'
+Bundle 'textobj-user'
+Bundle 'textobj-rubyblock'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'tpope/vim-commentary'
+Bundle 'skammer/vim-css-color'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-endwise'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'mattn/zencoding-vim'
 
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
@@ -24,7 +49,7 @@ source ~/.vim/snippets/support_functions.vim
 
 " Syntax and appearance
 syntax enable
-filetype on
+filetype plugin indent on
 
 set cf
 set clipboard+=unnamed
