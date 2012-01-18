@@ -95,3 +95,6 @@
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/zazen-powerline"]
+	path = vim/bundle/zazen-powerline
+	url = git@github.com:zaki/zazen-powerline.git

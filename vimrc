@@ -156,6 +156,8 @@ nmap <Leader>m :w<CR>:make<CR>:cw<CR>
 "}}}
 
 "{{{ - Statusline Settings
+let g:Powerline_theme = 'zazen'
+
 set statusline=%t%m%r%h%w\ %{fugitive#statusline()}\ [TYPE:%Y]
 if ($RUBY_VERSION)
   set statusline+=\ [RUBY:%{$RUBY_VERSION}]
