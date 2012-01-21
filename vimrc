@@ -10,7 +10,33 @@ end
 set viminfo^=!
 
 " Set up pathogen
-call pathogen#runtime_append_all_bundles()
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+" Plugins
+Bundle 'zaki/zazen'
+Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'matchit.zip'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-rails'
+Bundle 'scratch.vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'godlygeek/tabular'
+Bundle 'textobj-user'
+Bundle 'textobj-rubyblock'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'tpope/vim-commentary'
+Bundle 'skammer/vim-css-color'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-endwise'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'mattn/zencoding-vim'
+Bundle 'zaki/zazen-powerline'
 
 " Minibuffer Explorer Settings
 let g:miniBufExplMapWindowNavVim = 1
@@ -24,7 +50,7 @@ source ~/.vim/snippets/support_functions.vim
 
 " Syntax and appearance
 syntax enable
-filetype on
+filetype plugin indent on
 
 set cf
 set clipboard+=unnamed
@@ -158,58 +184,6 @@ nmap <Leader>m :w<CR>:make<CR>:cw<CR>
 "{{{ - Statusline Settings
 let g:Powerline_theme = 'zazen'
 
-set statusline=%t%m%r%h%w\ %{fugitive#statusline()}\ [TYPE:%Y]
-if ($RUBY_VERSION)
-  set statusline+=\ [RUBY:%{$RUBY_VERSION}]
-endif
-
-set statusline+=%{'\ [ENC:'.&fenc.']'}
-set statusline+=%#error#
-set statusline+=%{StatuslineTabWarning()}
-set statusline+=%*
-set statusline+=%#error#
-set statusline+=%{StatuslineTrailingSpaceWarning()}
-set statusline+=%*
-set statusline+=%#error#
-set statusline+=%{StatuslineFullwidthSpaceWarning()}
-set statusline+=%*
-
-function! StatuslineTrailingSpaceWarning()
-    if !exists("b:statusline_trailing_space_warning")
-        if search('\s\+$', 'nw') != 0
-            let b:statusline_trailing_space_warning = '[~]'
-        else
-            let b:statusline_trailing_space_warning = ''
-        endif
-    endif
-    return b:statusline_trailing_space_warning
-endfunction
-
-function! StatuslineTabWarning()
-    if !exists("b:statusline_tab_warning")
-        let tabs = search('^\t', 'nw') != 0
-
-        if tabs
-            let b:statusline_tab_warning =  '[TAB]'
-        else
-            let b:statusline_tab_warning = ''
-        endif
-    endif
-    return b:statusline_tab_warning
-endfunction
-
-function! StatuslineFullwidthSpaceWarning()
-    if !exists("b:statusline_fwspace_warning")
-        let tabs = search('　', 'nw') != 0
-
-        if tabs
-            let b:statusline_fwspace_warning =  '[FWS]'
-        else
-            let b:statusline_fwspace_warning = ''
-        endif
-    endif
-    return b:statusline_fwspace_warning
-endfunction
 let g:ackhighlight=1
 if (has("gui"))
   set colorcolumn=100
