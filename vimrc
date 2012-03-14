@@ -167,6 +167,10 @@ noremap <C-j> 5j
 noremap <C-k> 5k
 noremap <C-h> 5h
 noremap <C-l> 5l
+inoremap <C-j> <ESC>5<C-E>a
+inoremap <C-k> <ESC>5<C-Y>a
+inoremap <D-j> <ESC><C-E>a
+inoremap <D-k> <ESC><C-Y>a
 noremap <Leader>tl :TlistToggle<CR> " Taglist window
 map :cloc :!cloc --exclude-dir=.git,.idea .<CR>
 " Rails
@@ -182,7 +186,10 @@ nmap <Leader>m :w<CR>:make<CR>:cw<CR>
 "}}}
 
 "{{{ - Statusline Settings
-let g:Powerline_theme = 'zazen'
+let g:Powerline_theme            = 'zazen'
+let g:Powerline_colorscheme      = 'zazen'
+let g:Powerline_symbols          = 'compatible'
+let g:Powerline_symbols_override = { 'BRANCH': '' }
 
 let g:ackhighlight=1
 if (has("gui"))
