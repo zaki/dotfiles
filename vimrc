@@ -9,7 +9,7 @@ end
 
 set viminfo^=!
 
-" Set up pathogen
+" Set up vundle
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
@@ -38,12 +38,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'zaki/zazen-powerline'
 
-" Minibuffer Explorer Settings
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-
 " Snippets Settings
 let g:snippets_dir="~/.vim/snippets"
 source ~/.vim/snippets/support_functions.vim
@@ -70,7 +64,7 @@ set ts=2
 set bs=2
 set shiftwidth=2
 set nocp incsearch
-set cinoptions=:0,p0,t0
+set cinoptions=:1s,t0
 set cinwords=if,else,while,do,for,switch,case
 set formatoptions=tcqr
 set cindent
@@ -81,8 +75,9 @@ set expandtab
 set backspace=indent,eol,start
 
 set showmatch
-set mat=5
+set mat=3
 set list
+
 " Show $ at end of line and trailing space as ~
 set lcs=tab:->,trail:~,extends:>,precedes:<
 set novisualbell
@@ -97,42 +92,28 @@ set incsearch
 set hlsearch
 set showcmd
 set foldmethod=marker
+
+set nobackup
+set spell spelllang=en
+if (has("gui"))
+  set colorcolumn=100
+end
 "}}}
 
 "{{{ - Plugin Settings
+" Ack
+let g:ackhighlight=1
 
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/Wiki/diary', 'ext': '.wiki', 'index': 'diary'}]
 
-
 " Ruby/rails Settings
 let g:rails_default_file='config/database.yml'
-
-" Org Mode
-set foldmethod=manual
-filetype plugin indent on
-
-let g:agenda_dirs='~/Dropbox/org/'
-let g:agenda_files=['~/Dropbox/org/personal.org'
-                 \ ,'~/Dropbox/org/work.org'
-                 \ ]
-
-let g:org_todo_setup='SOMEDAY TODO NEXT STARTED | DONE CANCELED'
-let g:org_tag_setup='{@home(h) @work(w)} {+top(t) +mid(m) +low(l)} {computer(c) phone(p)}'
-map <Leader>cv :let b:v.columnview = 1 - b:v.columnview<CR>
-
 
 " Zencoding
 let g:user_zen_settings = {
 \  'indentation' : '  ',
 \}
-
-" SuperTab
-let g:SuperTabDefaultCompletionType = "context"
-set nobackup
-set spell spelllang=en
-inoremap ii <ESC>
-inoremap jj <ESC>
 
 " Fugitive
 noremap <Leader>gb :Gblame<CR>
@@ -147,10 +128,18 @@ map <Leader>gb :Gblame<CR>
 let g:vimclojure#HighlightBuiltins=1
 let g:vimclojure#DynamicHighlighting=1
 let g:vimclojure#ParenRainbow=1
+
+" Powerline
+let g:Powerline_theme            = 'zazen'
+let g:Powerline_colorscheme      = 'zazen'
+let g:Powerline_symbols          = 'compatible'
+let g:Powerline_symbols_override = { 'BRANCH': '' }
 "}}}
 
 "{{{ - Map Settings
 " General
+inoremap ii <ESC>
+inoremap jj <ESC>
 map <Leader>h :set invhls <CR>
 map <Leader>l :lw<CR>
 map <Leader>n :NERDTreeToggle<CR>
@@ -185,18 +174,6 @@ map <Leader>cu :%s/ \+$//e \| %s/\t/  /ge<CR>
 nmap <Leader>m :w<CR>:make<CR>:cw<CR>
 "}}}
 
-"{{{ - Statusline Settings
-let g:Powerline_theme            = 'zazen'
-let g:Powerline_colorscheme      = 'zazen'
-let g:Powerline_symbols          = 'compatible'
-let g:Powerline_symbols_override = { 'BRANCH': '' }
-
-let g:ackhighlight=1
-if (has("gui"))
-  set colorcolumn=100
-end
-"}}}
-
 "{{{ - Autocommand Settings
 " Ruby
 au FileType ruby,eruby set omnifunc=rubycomplete#Complete
@@ -207,21 +184,11 @@ au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " F#
 au BufRead *.fs set filetype=fs
 
-" Javascript
-au BufRead *_javascript.erb set filetype=javascript
-
 " Tags
 au FileType taglist setlocal nospell
-au BufRead *.org :PreLoadTags
-au BufWrite *.org :PreWriteTags
-au BufWritePost *.org :PostWriteTags
 
 " Jekyll
 au BufNewFile,BufRead */_posts/*.markdown syntax match Comment /\%^---\_.\{-}---$/
-
-" Orgmode
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-au BufRead,BufNewFile *.org call org#SetOrgFileType()
 
 ""recalculate the trailing whitespace warning when idle, and after saving
 au cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
