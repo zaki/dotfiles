@@ -37,6 +37,9 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'mattn/zencoding-vim'
 Bundle 'zaki/zazen-powerline'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'msanders/cocoa.vim'
+Bundle 'rson/vim-conque'
 
 " Snippets Settings
 let g:snippets_dir="~/.vim/snippets"
