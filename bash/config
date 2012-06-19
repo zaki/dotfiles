@@ -13,6 +13,8 @@ function set_git_prompt() {
   export GIT_STAGED=''
   export GIT_UNTRACKED=''
   export GIT_UNSTAGED=''
+  export GIT_NEED_PUSH=''
+  export GIT_NEED_PULL=''
   export DATE=`date +%H:%M:%S`
   STATUS=$(git status 2> /dev/null)
   if [[ -z $STATUS ]]
@@ -23,6 +25,15 @@ function set_git_prompt() {
   export GIT_START='('
   export GIT_END=')'
 
+  if [[ "$STATUS" == *'Your branch is ahead'* ]]
+  then
+    export GIT_NEED_PUSH='⟰'
+  fi
+
+  if [[ "$STATUS" == *'have diverged,'* ]]
+  then
+    export GIT_NEED_PULL='⤋'
+  fi
   if [[ "$STATUS" == *'working directory clean'* ]]
   then
     export GIT_STATE=''
@@ -31,7 +42,7 @@ function set_git_prompt() {
     then
       export GIT_STAGED='●'
     fi
-    if [[ "$STATUS" == *'Changed but not updated:'* ]]
+    if [[ "$STATUS" == *'Changes not staged for commit:'* ]] || [[ "$STATUS" == *'Changed but not updated:'* ]]
     then
       export GIT_UNSTAGED='●'
     fi
@@ -42,7 +53,7 @@ function set_git_prompt() {
   fi
 }
 export PROMPT_COMMAND="set_git_prompt"
-export PS1="[\$DATE]\w ${c_yellow}\$GIT_START${c_yellow}\$GIT_BRANCH${c_red}\$GIT_UNSTAGED${c_green}\$GIT_STAGED${c_white}\$GIT_UNTRACKED${c_yellow}\$GIT_END ${c_white}\$ ${c_sgr0}"
+export PS1="[\$DATE]\w ${c_yellow}\$GIT_START${c_yellow}\$GIT_BRANCH${c_red}\$GIT_UNSTAGED${c_green}\$GIT_STAGED${c_white}\$GIT_UNTRACKED${c_yellow}${c_red}\$GIT_NEED_PULL\$GIT_NEED_PUSH${c_yellow}\$GIT_END ${c_white}\$ ${c_sgr0}"
 export CLICOLOR=1
 export LSCOLORS=GxCxcxdxBxegedHbHgHbbA
 
