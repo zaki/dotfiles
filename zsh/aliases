@@ -45,6 +45,14 @@ alias rg='rails g'
 alias rk=rake
 alias s='rake spec'
 
+# padrino
+alias p=padrino
+alias ps='padrino start'
+alias pg='padrino generate'
+alias pr='padrino rake'
+alias pc='padrino console'
+alias prs='padrino rake spec'
+
 # various
 alias gv='gvim .'
 alias v='mvim .'
@@ -53,7 +61,7 @@ alias cl='clear && ls -la'
 alias h='cd ~'
 alias o='open'
 
-function p() {
+function proj() {
   if [ $# -eq 1 ]
   then
     if [ -d ~/dev/$1 ]
