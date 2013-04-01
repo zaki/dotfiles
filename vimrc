@@ -104,6 +104,9 @@ end
 "}}}
 
 "{{{ - Plugin Settings
+" NERDTree
+let NERDTreeIgnore = ['\~$', '\.meta$']
+
 " Ack
 let g:ackhighlight=1
 
