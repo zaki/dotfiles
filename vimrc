@@ -40,6 +40,7 @@ Bundle 'zaki/zazen-powerline'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'msanders/cocoa.vim'
 Bundle 'rson/vim-conque'
+Bundle 'airblade/vim-gitgutter'
 
 " Snippets Settings
 let g:snippets_dir="~/.vim/snippets"
