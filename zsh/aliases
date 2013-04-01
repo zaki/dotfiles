@@ -31,7 +31,7 @@ fi
 alias gp='git pull'
 alias gpr='git pull --rebase'
 alias gb='git branch -a'
-alias gru='git remote update'
+alias gru='git remote update --prune'
 alias grm='git rebase origin/master'
 alias stashpull='git stash && git pull && git stash pop'
 
