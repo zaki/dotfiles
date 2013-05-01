@@ -8,7 +8,13 @@ alias ls="ls -laG"
 alias lg='less +G'
 
 # git
-alias g='git'
+function g {
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git status
+  fi
+}
 alias grh='git reset --hard'
 function gpo() {
   if [ $# -eq 1 ]
