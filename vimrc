@@ -1,5 +1,37 @@
+"{{{ - Bundles
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-endwise'
+
+Bundle 'textobj-user'
+Bundle 'textobj-rubyblock'
+
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'kien/ctrlp.vim'
+
+Bundle 'mileszs/ack.vim'
+Bundle 'matchit.zip'
+Bundle 'godlygeek/tabular'
+Bundle 'scratch.vim'
+
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'skammer/vim-css-color'
+
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'zaki/zazen'
+Bundle 'zaki/zazen-powerline'
+"}}}
+
 "{{{ - General Settings
-" ---------------------
 set nocompatible
 if has("win32") || has("win64")
   source $VIMRUNTIME/vimrc_example.vim
@@ -8,43 +40,6 @@ if has("win32") || has("win64")
 end
 
 set viminfo^=!
-
-" Set up vundle
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
-
-" Plugins
-Bundle 'zaki/zazen'
-Bundle 'mileszs/ack.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'matchit.zip'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-rails'
-Bundle 'scratch.vim'
-Bundle 'msanders/snipmate.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'godlygeek/tabular'
-Bundle 'textobj-user'
-Bundle 'textobj-rubyblock'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-commentary'
-Bundle 'skammer/vim-css-color'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-endwise'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'mattn/zencoding-vim'
-Bundle 'zaki/zazen-powerline'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'msanders/cocoa.vim'
-Bundle 'rson/vim-conque'
-Bundle 'airblade/vim-gitgutter'
-
-" Snippets Settings
-let g:snippets_dir="~/.vim/snippets"
-source ~/.vim/snippets/support_functions.vim
 
 " Syntax and appearance
 syntax enable
@@ -111,16 +106,8 @@ let NERDTreeIgnore = ['\~$', '\.meta$']
 " Ack
 let g:ackhighlight=1
 
-" Vimwiki
-let g:vimwiki_list = [{'path': '~/Dropbox/Wiki/diary', 'ext': '.wiki', 'index': 'diary'}]
-
 " Ruby/rails Settings
 let g:rails_default_file='config/database.yml'
-
-" Zencoding
-let g:user_zen_settings = {
-\  'indentation' : '  ',
-\}
 
 " Fugitive
 noremap <Leader>gb :Gblame<CR>
@@ -130,11 +117,6 @@ noremap <Leader>gs :Gstatus<CR>
 map <Leader>gl :Glog --max-count=10 --format=format:\%h\ \%cd\ \%an\ \%s --date=short<CR>
 map <Leader>gs :Gstatus<CR>
 map <Leader>gb :Gblame<CR>
-
-" Clojure
-let g:vimclojure#HighlightBuiltins=1
-let g:vimclojure#DynamicHighlighting=1
-let g:vimclojure#ParenRainbow=1
 
 " Powerline
 let g:Powerline_theme            = 'zazen'
@@ -147,9 +129,6 @@ let g:Powerline_symbols_override = { 'BRANCH': '' }
 " General
 inoremap ii <ESC>
 inoremap jj <ESC>
-map <Leader>h :set invhls <CR>
-map <Leader>l :lw<CR>
-map <Leader>n :NERDTreeToggle<CR>
 imap <C-Space> <C-N>
 noremap <Space> <C-f>
 map :W :w
@@ -158,6 +137,7 @@ inoremap <C-S> <ESC>:w<CR>a
 noremap <C-S> :w<CR>
 noremap 0 ^
 noremap 00 0
+
 " Accelerated movements
 noremap <C-j> 5j
 noremap <C-k> 5k
@@ -167,18 +147,20 @@ inoremap <C-j> <ESC>5<C-E>a
 inoremap <C-k> <ESC>5<C-Y>a
 inoremap <D-j> <ESC><C-E>a
 inoremap <D-k> <ESC><C-Y>a
-noremap <Leader>tl :TlistToggle<CR> " Taglist window
-map :cloc :!cloc --exclude-dir=.git,.idea .<CR>
+
+" Leaders
+map <Leader>h :set invhls <CR>
+map <Leader>n :NERDTreeToggle<CR>
+map <Leader>f :Ack
+
 " Rails
 map <Leader>m :Rmodel
 map <Leader>c :Rcontroller
 map <Leader>v :Rview
 map <Leader>r :e config/routes.rb
-map <Leader>f :Ack
+
 " File cleanup
 map <Leader>cu :%s/ \+$//e \| %s/\t/  /ge<CR>
-" Lint
-nmap <Leader>m :w<CR>:make<CR>:cw<CR>
 "}}}
 
 "{{{ - Autocommand Settings
