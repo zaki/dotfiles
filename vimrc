@@ -173,6 +173,10 @@ au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " F#
 au BufRead *.fs set filetype=fs
 
+" C#
+au FileType cs set ts=4
+au FileType cs set sw=4
+
 " Tags
 au FileType taglist setlocal nospell
 
