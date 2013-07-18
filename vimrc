@@ -9,6 +9,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-dispatch'
 
 Bundle 'textobj-user'
 Bundle 'textobj-rubyblock'
@@ -25,6 +26,7 @@ Bundle 'scratch.vim'
 
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'skammer/vim-css-color'
+Bundle 'nosami/Omnisharp'
 
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'zaki/zazen'
@@ -123,6 +125,11 @@ let g:Powerline_theme            = 'zazen'
 let g:Powerline_colorscheme      = 'zazen'
 let g:Powerline_symbols          = 'compatible'
 let g:Powerline_symbols_override = { 'BRANCH': '' }
+
+" Omnisharp
+nnoremap gd :OmniSharpGotoDefinition<CR>
+set completeopt=longest,menuone
+
 "}}}
 
 "{{{ - Map Settings
