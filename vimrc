@@ -27,6 +27,7 @@ Bundle 'scratch.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'skammer/vim-css-color'
 Bundle 'nosami/Omnisharp'
+Bundle 'uggedal/go-vim'
 
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'zaki/zazen'
@@ -182,6 +183,10 @@ au BufRead *.fs set filetype=fs
 
 " C#
 au FileType cs setl ts=4 sw=4
+
+" Go
+au BufRead,BufNewFile *.go set filetype=go
+au FileType go setl ts=4 sw=4
 
 " Tags
 au FileType taglist setlocal nospell

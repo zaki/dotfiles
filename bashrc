@@ -6,3 +6,5 @@ source ~/.bash/completions
 source ~/.bash/config
 
 [[ -s "$HOME/.localrc" ]] && source "$HOME/.localrc"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

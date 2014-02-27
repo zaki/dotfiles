@@ -227,7 +227,7 @@ rails_best_practices_output.html
 
 # Clojure
 pom.xml
-*jar
+#*jar
 /lib/
 /classes/
 .lein-deps-sum
@@ -235,6 +235,9 @@ pom.xml
 #}}}
 
 #{{{ - Miscellaneous
+# OSX Bundle
+*.bundle
+*.bundle.meta
 
 # Android
 *.apk
@@ -263,5 +266,9 @@ mt.dep
 
 # Jekyll
 _site/
+
+# Unity
+_PersonalAssets/
+_PersonalAssets.meta
 
 #}}}
