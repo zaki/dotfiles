@@ -183,6 +183,7 @@ au BufRead *.fs set filetype=fs
 
 " C#
 au FileType cs setl ts=4 sw=4
+au FileType cs setlocal omnifunc=OmniSharp#Complete
 
 " Go
 au BufRead,BufNewFile *.go set filetype=go
