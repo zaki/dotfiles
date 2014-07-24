@@ -1,5 +1,5 @@
 export ZSH=$HOME/.oh-my-zsh
-plugins=(git osx ruby bundler brew cap gem github rails vagrant knife docker)
+plugins=(git osx ruby rvm rbenv bundler brew brew-cask cap gem github rails vagrant knife docker golang)
 source $ZSH/oh-my-zsh.sh
 
 [[ -s "$HOME/.projectrc" ]] && source "$HOME/.projectrc"

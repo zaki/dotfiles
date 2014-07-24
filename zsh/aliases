@@ -2,7 +2,7 @@
 alias ..='cd ..'
 
 # ls
-alias ls="ls -laG"
+alias ls="ls -laGh"
 
 # less
 alias lg='less +G'
@@ -66,7 +66,7 @@ alias prs='padrino rake spec'
 alias gv='gvim .'
 alias v='mvim .'
 alias c=clear
-alias cl='clear && ls -la'
+alias cl='clear && ls -lah'
 alias h='cd ~'
 alias o='open'
 
@@ -83,11 +83,6 @@ function proj() {
   else
     cd ~/dev/
   fi
-}
-
-# screen
-function scr() {
-  screen -D -R -c ~/.screenrc-$1
 }
 
 # linux

@@ -1,5 +1,0 @@
-source /Users/zaki/.screenrc
-
-screen -t "[term]" zsh
-screen -t "[cons]" rails c
-screen -t "[test]" autotest

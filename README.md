@@ -101,51 +101,24 @@ Your gitconfig will be set up automatically on install, asking for your
 name, email and github credentials. Beyond that a common gitignore file
 will be set up for you at ~/.gitignore
 
-### Screen configuration
-
-The screen prompt is set up to include a caption that displays the window
-title the current time and the load average.
-
-A special rails-specific screen configuration is created, which can be used
-by issuing
-
-    scr rails
-
-This will create three screen windows starting at the current directory:
-* a normal terminal session
-* a rails console
-* autotest
-
 ### Vim configuration
 
 #### Plugins
+* a number of plugins by tpope (fugitive, repeat, surround, dispatch, etc)
 * ack  (you can install the ack binary using brew install ack on OSX)
-* bufexplorer
-* cocoa syntax files
-* conqueterm
-* F# syntax
-* fugitive
-* gitv
-* jsbeautify
-* matchit
 * NERDTree
+* syntastic
+* ctrl-p
+* powerline
+* git-gutter
 * rails-vim
-* rvm
-* scratch:
-* snipmate
-* supertab
+* scratch
 * tabular
-* coffee-script
-* slime
-* vimclojure
-* vimorganizer
-* vimwiki
-* zencoding
+* OmniSharp
 
 #### Settings
 
-By default my own colorscheme (zazen) is used. Ryan Bates' (@rbates) great
-railscasts colorscheme is also bundled.
+By default my own colorscheme (zazen) is used.
 
 Some mappings include
 * ii        : mapped to escape in insert mode
@@ -159,13 +132,3 @@ Some mappings include
 The statusline includes the git branch, the file type and encoding and
 possible formatting warnings (mixed tabs and spaces, full-width spaces)
 
-### Windows support
-
-For a while I had to use windows for development and these dotfiles were at
-that time mostly windows-compatible. One extra windows-specific feature though
-is an aliases.cmd that is set up to run every time cmd.exe is started
-providing handy aliases just like in *nix environments.
-
-To enable this cmd file, rake install creates an aliases.reg registry file
-in your user directory. Importing that to the registry will enable loading
-.win/aliases.cmd automatically. This then uses doskey to define aliases.

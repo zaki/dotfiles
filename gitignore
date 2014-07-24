@@ -15,6 +15,11 @@ Desktop.ini
 # SVN
 .svn/
 
+# Mercurial
+/.hg/*
+*/.hg/*
+.hgignore
+
 # Miscellanious
 *.patch
 
@@ -234,9 +239,44 @@ pom.xml
 /classes/
 .lein-deps-sum
 
+# Go
+_obj
+_test
+*.[568vq]
+[568vq].out
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+_testmain.go
+*.test
+*.prof
+
+# Java
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
 #}}}
 
 #{{{ - Miscellaneous
+#
+.ctags
+TAGS
+!TAGS/
+tags
+!tags/
+gtags.files
+GTAGS
+GRTAGS
+GPATH
+cscope.files
+cscope.out
+cscope.in.out
+cscope.po.out
+
 # OSX Bundle
 *.bundle
 *.bundle.meta
@@ -245,23 +285,10 @@ pom.xml
 *.apk
 *.ap_
 *.class
-
-# OpenSim
-compile.bat
-Examples/*.dll
-OpenSim.build
-OpenSim.sln
-Prebuild/Prebuild.build
-Prebuild/Prebuild.sln
-cov/*
-OpenSim/OpenSim.userprefs
-OpenSim/OpenSim.usertasks
-ThirdParty/bin/
-*.vshost.*
-*.intermediate.manifest
-BuildLog.htm
-mt.dep
-*.PIXRun
+*.dex
+.gradle/
+local.properties
+proguard/
 
 # Sass
 .sass-cache
@@ -272,5 +299,11 @@ _site/
 # Unity
 _PersonalAssets/
 _PersonalAssets.meta
+
+# Vagrant & Chef
+.vagrant/
+/cookbooks
+.kitchen/
+.kitchen.local.yml
 
 #}}}
