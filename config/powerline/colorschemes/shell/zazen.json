@@ -1,0 +1,20 @@
+{
+	"name": "Zazen shell colorscheme",
+	"groups": {
+		"hostname":       { "fg": "gray1", "bg": "gray8", "attr": [] },
+		"jobnum":         { "fg": "brightyellow", "bg": "gray0", "attr": [] },
+		"exit_fail":      { "fg": "brightred", "bg": "gray1", "attr": [] },
+		"exit_success":   { "fg": "white", "bg": "darkestgreen", "attr": [] },
+		"environment":    { "fg": "gray6", "bg": "gray1", "attr": [] },
+		"mode":           { "fg": "white", "bg": "gray2", "attr": ["bold"] },
+    "branch_clean":   { "fg": "white", "bg": "gray1" },
+    "branch_dirty":   { "fg": "brightestred", "bg": "gray1" }
+	},
+	"mode_translations": {
+		"vicmd": {
+			"groups": {
+				"mode": {"fg": "darkestcyan", "bg": "white", "attr": ["bold"]}
+			}
+		}
+	}
+}

@@ -29,9 +29,7 @@ Bundle 'skammer/vim-css-color'
 Bundle 'nosami/Omnisharp'
 Bundle 'uggedal/go-vim'
 
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'zaki/zazen'
-Bundle 'zaki/zazen-powerline'
 "}}}
 
 "{{{ - General Settings
@@ -48,40 +46,39 @@ set viminfo^=!
 syntax enable
 filetype plugin indent on
 
-set cf
+set confirm
 set clipboard+=unnamed
 set history=256
 set autowrite
 set ruler
-set nu
+set number
 set nowrap
 set timeoutlen=250
-set go=
-set ut=30
+set guioptions=
+set updatetime=30
 
 " colorscheme
 colorscheme zazen
 
-set ts=2
-set bs=2
+set tabstop=2
+set backspace=2
 set shiftwidth=2
-set nocp incsearch
-set cinoptions=:1s,t0
-set cinwords=if,else,while,do,for,switch,case
-set formatoptions=tcqr
+set backspace=indent,eol,start
 set cindent
 set autoindent
 set smarttab
 set expandtab
-
-set backspace=indent,eol,start
+set listchars=tab:->,trail:~,extends:>,precedes:<
+set nocompatible incsearch
+set hlsearch
+set cinoptions=:1s,t0
+set cinwords=if,else,while,do,for,switch,case
+set formatoptions=tcqr
 
 set showmatch
-set mat=3
+set matchtime=3
 set list
 
-" Show $ at end of line and trailing space as ~
-set lcs=tab:->,trail:~,extends:>,precedes:<
 set novisualbell
 set noerrorbells
 set laststatus=2
@@ -90,8 +87,6 @@ set mousehide
 set mouse=a
 let mapleader = ","
 
-set incsearch
-set hlsearch
 set showcmd
 set foldmethod=marker
 
@@ -122,10 +117,9 @@ map <Leader>gs :Gstatus<CR>
 map <Leader>gb :Gblame<CR>
 
 " Powerline
-let g:Powerline_theme            = 'zazen'
-let g:Powerline_colorscheme      = 'zazen'
-let g:Powerline_symbols          = 'compatible'
-let g:Powerline_symbols_override = { 'BRANCH': '' }
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 
 " Omnisharp
 nnoremap gd :OmniSharpGotoDefinition<CR>
@@ -173,33 +167,33 @@ map <Leader>cu :%s/ \+$//e \| %s/\t/  /ge<CR>
 
 "{{{ - Autocommand Settings
 " Ruby
-au FileType ruby,eruby set omnifunc=rubycomplete#Complete
-au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-au FileType ruby,eruby let g:rubycomplete_rails = 1
-au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 " F#
-au BufRead *.fs set filetype=fs
+autocmd BufRead *.fs set filetype=fs
 
 " C#
-au FileType cs setl ts=4 sw=4
-au FileType cs setlocal omnifunc=OmniSharp#Complete
+autocmd FileType cs setl tabstop=4 shiftwidth=4
+autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
 
 " Go
-au BufRead,BufNewFile *.go set filetype=go
-au FileType go setl ts=4 sw=4
+autocmd BufRead,BufNewFile *.go set filetype=go
+autocmd FileType go setl tabstop=4 shiftwidth=4
 
 " Tags
-au FileType taglist setlocal nospell
+autocmd FileType taglist setlocal nospell
 
 " Jekyll
-au BufNewFile,BufRead */_posts/*.markdown syntax match Comment /\%^---\_.\{-}---$/
+autocmd BufNewFile,BufRead */_posts/*.markdown syntax match Comment /\%^---\_.\{-}---$/
 
 ""recalculate the trailing whitespace warning when idle, and after saving
-au cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
-au cursorhold,bufwritepost * unlet! b:statusline_tab_warning
-au cursorhold,bufwritepost * unlet! b:statusline_fwspace_warning
-au! Cursorhold * exe 'match Error /　/'
+autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
+autocmd cursorhold,bufwritepost * unlet! b:statusline_fwspace_warning
+autocmd! Cursorhold * exe 'match Error /　/'
 "}}}
 
 highlight diffAdded guifg=#00bf00
