@@ -94,6 +94,7 @@ set nobackup
 set spell spelllang=en
 if (has("gui"))
   set colorcolumn=100
+  set guifont=Sauce\ Code\ Powerline:h12
 end
 "}}}
 
