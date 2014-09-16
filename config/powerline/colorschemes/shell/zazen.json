@@ -7,8 +7,8 @@
 		"exit_success":   { "fg": "white", "bg": "darkestgreen", "attr": [] },
 		"environment":    { "fg": "gray6", "bg": "gray1", "attr": [] },
 		"mode":           { "fg": "white", "bg": "gray2", "attr": ["bold"] },
-    "branch_clean":   { "fg": "white", "bg": "gray1" },
-    "branch_dirty":   { "fg": "brightestred", "bg": "gray1" }
+    "branch_clean":   { "fg": "white", "bg": "gray1", "attr": [] },
+    "branch_dirty":   { "fg": "brightestred", "bg": "gray1", "attr": [] }
 	},
 	"mode_translations": {
 		"vicmd": {

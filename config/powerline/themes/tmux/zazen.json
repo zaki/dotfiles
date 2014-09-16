@@ -3,14 +3,14 @@
 	"segments": {
 		"right": [
 			{
-				"name": "date",
+				"function": "date",
 				"args": {
 					"format": "%H:%M",
 					"istime": true
 				}
 			},
 			{
-				"name": "hostname"
+				"function": "hostname"
 			}
 		]
 	}
