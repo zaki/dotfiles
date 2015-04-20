@@ -30,6 +30,7 @@ Bundle 'nosami/Omnisharp'
 Bundle 'uggedal/go-vim'
 
 Bundle 'zaki/zazen'
+Bundle 'MarcWeber/vim-addon-local-vimrc'
 "}}}
 
 "{{{ - General Settings
@@ -126,6 +127,8 @@ python del powerline_setup
 nnoremap gd :OmniSharpGotoDefinition<CR>
 set completeopt=longest,menuone
 
+" Local vimrc
+let g:local_vimrc={'names': ['.vimrc', '.lvimrc'], 'hash_fun': 'LVRHashOfFile'}
 "}}}
 
 "{{{ - Map Settings
